@@ -1,0 +1,39 @@
+{
+  "schema_version": "reticular-public-tokenization-benchmark/v1",
+  "code_commit": "ac9ef0e9f16064fc1f95948a9fa63d8393b8b4d0",
+  "public_data_only": true,
+  "locked_test_used": false,
+  "cohort_sha256": "c8b7c891467d24c9855c5d473d9a44108e71d49a20a9724703680b0892c9a40e",
+  "tokenizer_sha256": "692c032232df5667ab1323b30f10b1db9ffad105f42cef3a02280bc758e2f352",
+  "variant_count": 82401,
+  "motif_count": 3662,
+  "vocabulary_size": 8192,
+  "length_unit": "content tokens",
+  "comparison_unit": "allele-specific dosage vector, not the full nucleotide string",
+  "training": {
+    "people": 400,
+    "mean": 1208.805,
+    "median": 1188.5,
+    "p95": 1463.2499999999998,
+    "maximum": 1985,
+    "total_content_tokens": 483522,
+    "motif_token_fraction": 0.3735714197078933,
+    "residual_token_fraction": 0.6264285802921067,
+    "residual_only_mean": 10650.59,
+    "framing_tokens_per_person": 3
+  },
+  "validation": {
+    "people": 55,
+    "mean": 1451.909090909091,
+    "median": 1427.0,
+    "p95": 1762.5,
+    "maximum": 1875,
+    "total_content_tokens": 79855,
+    "motif_token_fraction": 0.32417506730949847,
+    "residual_token_fraction": 0.6758249326905015,
+    "residual_only_mean": 10705.236363636364,
+    "framing_tokens_per_person": 3
+  },
+  "exact_reconstruction_people": 455,
+  "exact_genotype_reconstruction_rate": 1.0
+}

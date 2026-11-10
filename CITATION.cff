@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this software and the 1000 Genomes source publication. Include the commit used in your methods."
+title: "Reticular diploid genome tokenization"
+authors:
+  - name: "Reticular"
+type: software
+license: MIT
+repository-code: "https://github.com/reticular-ai/reticular-diploid-demo"
+url: "https://github.com/reticular-ai/reticular-diploid-demo"
+abstract: "Frozen-vocabulary, phase-independent diploid dosage tokenization and reproducible public 1000 Genomes benchmarks."

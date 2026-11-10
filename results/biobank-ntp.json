@@ -1,0 +1,156 @@
+{
+  "schema": "pgs-reviewed-aggregate-ntp-results/v1",
+  "benchmark_alias": "block589-diploid-8192-historical-v1",
+  "task": "causal next-token prediction of genotype-only diploid token streams",
+  "source_review_date": "2026-10-27",
+  "checkpoint_health_record_utc": "2026-10-14T17:02:55.900269+00:00",
+  "controller_cancellation_record_utc": "2026-10-14T17:55:09.102255+00:00",
+  "evidence_kind": "extraction of retained aggregate metrics and provenance verification records; no evaluation rerun",
+  "cohort": {
+    "participants": 269491,
+    "training_people": 268491,
+    "validation_people": 1000,
+    "original_membership_order_and_splits_verified": true,
+    "canonical_discovery_to_tuning_mapping": "not verified in this audit"
+  },
+  "tokenizer": {
+    "encoding": "genotype-only overlapping dosage motifs with residual R1/R2 events",
+    "content_vocabulary_size": 8186,
+    "model_vocabulary_size": 8192,
+    "recorded_reconstruction_failures": 0
+  },
+  "evaluation": {
+    "metric": "complete-validation canonical-target cross-entropy",
+    "unit": "nats/token",
+    "context": 256,
+    "window_stride": 128,
+    "overlapping_validation_targets_counted_once": true,
+    "seed": 20260825,
+    "uncertainty": "single selected training trajectory; no seed-replication interval",
+    "bits_per_person": null,
+    "bits_per_person_status": "not present in the reviewed aggregate packet"
+  },
+  "selection": {
+    "learning_rate_candidates": [
+      7.5e-05,
+      0.00015,
+      0.0003
+    ],
+    "selection_steps": [
+      15000,
+      20000,
+      25000
+    ],
+    "rule": "minimum mean full-validation CE over the three selection endpoints, within the diploid representation",
+    "selected_learning_rate": 0.00015,
+    "selected_mean_validation_ce": 0.5902776291055357,
+    "comparison_budget": "same update endpoints and original 200000-step scheduler horizon"
+  },
+  "execution": {
+    "horizon_steps": 200000,
+    "recorded_phase": "user_canceled",
+    "automatic_recovery_disabled": true,
+    "verified_durable_checkpoint_step": 96000,
+    "later_checkpoint_counter_step": 99000,
+    "later_counter_independently_reverified_as_durable": false,
+    "completion_claim": "training executed; completed 200000-step training is not established"
+  },
+  "best_recorded_validation": {
+    "step": 55000,
+    "ce": 0.5381517655643108
+  },
+  "training_diagnostic_50000": {
+    "logged_training_ce_previous_5000_updates": 0.4457455007045327,
+    "definition": "target-weighted sparse logged minibatches; not a full-epoch mean; overlap weighting differs from deduplicated validation",
+    "full_validation_ce": 0.5425585883027605,
+    "actual_base_schedule_lr": 0.0001319112146798863
+  },
+  "curve": [
+    {
+      "step": 5000,
+      "validation_ce": 0.759945769317195
+    },
+    {
+      "step": 10000,
+      "validation_ce": 0.6511761162637038
+    },
+    {
+      "step": 15000,
+      "validation_ce": 0.604091925036139
+    },
+    {
+      "step": 20000,
+      "validation_ce": 0.5938617179717857
+    },
+    {
+      "step": 25000,
+      "validation_ce": 0.5728792443086824
+    },
+    {
+      "step": 30000,
+      "validation_ce": 0.556345702783434
+    },
+    {
+      "step": 35000,
+      "validation_ce": 0.5461677153644948
+    },
+    {
+      "step": 40000,
+      "validation_ce": 0.5535122102087702
+    },
+    {
+      "step": 45000,
+      "validation_ce": 0.5488279100545798
+    },
+    {
+      "step": 50000,
+      "validation_ce": 0.5425585883027605
+    },
+    {
+      "step": 55000,
+      "validation_ce": 0.5381517655643108
+    },
+    {
+      "step": 60000,
+      "validation_ce": 0.5641313500220076
+    },
+    {
+      "step": 65000,
+      "validation_ce": 0.5563269751218527
+    },
+    {
+      "step": 70000,
+      "validation_ce": 0.5525589191220681
+    },
+    {
+      "step": 75000,
+      "validation_ce": 0.5579503015903808
+    },
+    {
+      "step": 80000,
+      "validation_ce": 0.5878452957975078
+    },
+    {
+      "step": 85000,
+      "validation_ce": 0.5816496680477012
+    },
+    {
+      "step": 90000,
+      "validation_ce": 0.5816211662415244
+    },
+    {
+      "step": 95000,
+      "validation_ce": 0.6276512535472633
+    }
+  ],
+  "publication_review": {
+    "destination": "GitHub repository reticular-ai/pgs, aggregate results PR",
+    "user_authorized": true,
+    "review_method": "manual destination-specific review; data-guardrails scanner unavailable",
+    "automated_or_official_export_clearance_claimed": false,
+    "scope": "whole-cohort counts, model settings, loss aggregates, experiment-level execution status",
+    "participant_or_genomic_records_included": false,
+    "subgroup_or_rare_allele_statistics_included": false,
+    "controlled_artifact_locators_or_payloads_included": false
+  }
+}

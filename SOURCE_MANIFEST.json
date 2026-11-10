@@ -221,7 +221,7 @@
     },
     "README.md": {
       "source": "publication-review draft",
-      "sha256": "1f19165b81a882d232970f291ee2033e9b7f8ab2021b88e256473725f03c3167"
+      "sha256": "cc50ed3cfc7eeb7dbe714b320685c5622e053b097873fc942815e5ac484509a1"
     },
     "reticular_diploid/analysis/public_distillation_figures.py": {
       "source": "pgs/analysis/public_distillation_figures.py",
@@ -281,11 +281,11 @@
     },
     "RESEARCH.md": {
       "source": "public release packaging",
-      "sha256": "fad19ba3eeb848e7d3bddc67bfc70dd1850ad1e8a89be393c1d4835cd7d0300c"
+      "sha256": "ddc2b816e60b45cfe4477937a76f19d716ac308b0bf90ea06b8ab6107d64fd97"
     },
     "RELEASE_REVIEW.md": {
       "source": "public release packaging",
-      "sha256": "0d5eeb59a5695b6be275086433f2a88b3fe20a75ad97b65ad3d3cbb04d1b9f3d"
+      "sha256": "2aa7f551f58ae278048688527c1c335c96720c2efe4426a3b84e2298329addde"
     },
     "tests/test_release_bundle.py": {
       "source": "public release packaging",
@@ -297,7 +297,51 @@
     },
     ".github/workflows/test.yml": {
       "source": "public release packaging",
-      "sha256": "2fcb2257633c26ad14dc142cdef77e7af3fcd6f02b17e105428124650d12df05"
+      "sha256": "87f8e5c4bcae4ecf6e412cdbf7bf728240b3f15345ee043df6a114f73efb5fd2"
+    },
+    "CITATION.cff": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "548af83caa9d280fdeda442de5f2644ad4f4aff59c96a60e72d0f3548fc921e3"
+    },
+    "CONTRIBUTING.md": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "e6c165e390ab4f38e5381702ec323806bcbb8b8bff6734729f876120f028543f"
+    },
+    "tests/test_motif_frequency.py": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "c6583c45c7ca381ecacebd71ddefa74535df89d5d058703672376d36172b022c"
+    },
+    "docs/methods.md": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "26094e8fd070e95c0d50d1b999ab019700b2dbf1b8189a5eddcd827e7abe25f9"
+    },
+    "docs/biobank.md": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "17de3d70ab962da47f8c900a93446060dcdde30ecafb978db0450587b6fb5c15"
+    },
+    "docs/reproduction.md": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "c29a00941dece883c90b839dbae2c9d1ab06c623d2a91429822d7a27e900b9b3"
+    },
+    "results/biobank-ntp.json": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "51e0ecd6f413d40f71c91885bb8ab2b8964d62156fb6148be8e8bc99bedf26d6"
+    },
+    "results/tokenization.json": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "b484a0b9e045d0aefa3eda90cdb0f86f58ed4b6942bb19e5e438ab57c1b9a487"
+    },
+    "results/biobank-length.json": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "80dfb5fb114b6dfdbc114e2c381c9455f4c57fa31cdc07be10f0dd32007af26a"
+    },
+    "examples/plot_tokenization.py": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "693ec04ac7132aea787ea4161af24621ba491b72c90d241044e92a96ae9fb52e"
+    },
+    "reticular_diploid/analysis/motif_frequency.py": {
+      "source": "public release presentation and aggregate evidence",
+      "sha256": "11226cbf26d29f30159c824dbe4dc11ab229727551bf40f6336aaefc526fe5e9"
     }
   },
   "previous_export_source_commit": "c2f51d8e36aa7169478bc7fb284893e53f0a7ce5",

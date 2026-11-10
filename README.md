@@ -1,89 +1,113 @@
-# Reticular diploid tokenization demo
+# Reticular · diploid genome tokenization
 
-**Lossless, phase-independent tokenization of human genetic variation using a frozen motif vocabulary.**
+[![CPU correctness](https://github.com/reticular-ai/reticular-diploid-demo/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-diploid-demo/actions/workflows/test.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-This public research demo encodes allele-specific diploid dosages across a 2.76 Mb region of chromosome 22 using approximately **1,452 tokens per validation individual**. The supplied dictionary was fitted exclusively on public 1000 Genomes training individuals. You can download the source data, encode genotypes, and verify exact reconstruction without private infrastructure.
+**A compact, lossless token representation of human diploid genetic variation.**
 
-## What is demonstrated?
+Across a 2.76 Mb region of chromosome 22, the released tokenizer represents a validation individual's genetic differences in **1,452 tokens on average**, using an **8,192-ID vocabulary**. Every allele-specific dosage is recovered exactly for all **455 development individuals**. The dictionary was fitted on public 1000 Genomes training data; encoding and reconstruction require no private infrastructure.
 
-| Block 589 development benchmark | Result |
-|---|---:|
-| GRCh38 interval (1-based, inclusive) | chr22:43,317,956–46,074,513 |
-| Normalized allele-specific variant universe | 82,401 |
-| Training / validation / reserved test people | 400 / 55 / 48 |
-| Vocabulary IDs / selected motifs | 8,192 / 3,662 |
-| Validation tokens: mean / median | 1,451.9 / 1,427 |
-| Validation tokens: p95 / maximum | 1,762.5 / 1,875 |
-| Validation residual-only baseline, mean | 10,705.2 |
-| Validation motif-token share | 32.42% |
-| Exact reconstruction on development individuals | 455 / 455 |
+[Quick start](#quick-start) · [Reproduce the benchmark](docs/reproduction.md) · [Methods](docs/methods.md) · [Biobank results](docs/biobank.md) · [Aggregate data](results)
 
-Lengths count content tokens; model framing adds three tokens. The reduction is approximately **7.37× relative to this residual-only grammar**, whose entries use two tokens per nonreference allele. This is not compression of an entire 2.76 Mb nucleotide string. The reference, allele catalog, and dictionary are shared side information. Phase, excluded symbolic structural variants, and VCF annotations are not represented.
+## Genetic variation as a token sequence
 
-Known pedigree components stay within a partition. Vocabulary fitting uses training individuals only; validation informed development. The 48 reserved test individuals have not been scored. These are development results for a small European-ancestry cohort, not a genome-wide or population-general benchmark.
+People share much of their genetic variation. A motif token represents a recurring set of allele dosages; residual tokens preserve the variation that motifs do not cover. The result is a deterministic sequence that can be decoded exactly and used as input to sequence models.
 
-## Try the codec without downloading genomes
+```mermaid
+flowchart LR
+    A["Allele-specific dosages<br/>0, 1 or 2"] --> B["Frozen motif encoder"]
+    B --> C["Motif + residual tokens"]
+    C --> D["Exact dosage reconstruction"]
+    C --> E["Sequence modeling"]
+```
 
-Requires Python 3.11 or 3.12. From a clone of this repository:
+This encodes **genetic differences relative to a shared reference and allele catalog**. It does not compress an entire nucleotide string or preserve haplotype phase. Selected motifs, token meanings, and inference code are public; vocabulary discovery and fitting remain proprietary.
+
+## Public-data benchmark
+
+![Token counts across the public validation cohort](figures/tokenization.svg)
+
+*Counts are means over 55 validation individuals. A nonreference allele entry is not itself a serialized token. The residual-only grammar uses two tokens per entry; the motif representation uses 7.37× fewer tokens than that baseline. Shared reference and dictionary storage are additional costs.*
+
+| Content sequence statistic | Training (400 people) | Validation (55 people) |
+|---|---:|---:|
+| Mean tokens | 1,208.8 | **1,451.9** |
+| Median | 1,188.5 | 1,427 |
+| 95th percentile | 1,463.3 | 1,762.5 |
+| Maximum | 1,985 | 1,875 |
+| Motif share of emitted tokens | 37.36% | 32.42% |
+| Residual-only mean | 10,650.6 | 10,705.2 |
+| Exact reconstruction | 400 / 400 | 55 / 55 |
+
+**Region:** GRCh38 chr22:43,317,956–46,074,513, inclusive (block 589). **Catalog:** 82,401 normalized allele-specific variants. **Dictionary:** 3,662 motifs, each with D1/D2 dosage states; 8,192 total IDs including residual and special tokens. Model framing adds three tokens per person.
+
+The 503-person EUR cohort is partitioned by known pedigree components into 400 training, 55 validation, and 48 reserved test individuals. Fitting uses training individuals only. Validation informed development; the reserved test is unscored. [Full methods and limitations →](docs/methods.md)
+
+### Motif use has a long tail
+
+![Rank-frequency distribution of emitted motif tokens](figures/motif-frequency.svg)
+
+*Only motif tokens are counted; residuals and framing are excluded. D1 and D2 are separate types. Each split is ranked independently. The common head and rare tail are visible in both splits; this descriptive plot does not establish a Zipf law.*
+
+The [aggregate CSVs](results) include zero-occurrence types, and the [reproduction guide](docs/reproduction.md#2-reproduce-motif-frequencies) explains how to regenerate them from canonical streams without counting overlapping windows twice.
+
+## Biobank-scale language modeling
+
+A separate All of Us campaign trained a larger Kimi-derived model on **268,491 people**, with **1,000 held-out validation people** and an 8,192-ID diploid tokenizer. **Mean sequence length is 707 tokens/person** (author-reported calculation; see provenance below). Recorded validation cross-entropy reached approximately **0.55 nats/token**; the best endpoint was **0.538 at 55K updates**. Later validation loss increased.
+
+![Biobank validation cross-entropy](figures/biobank-ntp.svg)
+
+These are historical development results from reviewed aggregate records. Canonical discovery/tuning role mapping remains unverified. The biobank and public experiments use different fitted dictionaries, cohorts and model configurations, so this is not a matched model-size or data-scaling comparison. [Protocol, full curve, and evidence limits →](docs/biobank.md)
+
+## Quick start
+
+Python 3.11 or 3.12; CPU only. No genotype download is needed for this example.
 
 ```bash
+git clone https://github.com/reticular-ai/reticular-diploid-demo.git
+cd reticular-diploid-demo
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 python examples/roundtrip.py
 ```
 
-The example uses a synthetic dosage vector and the real frozen vocabulary. It checks the dictionary hash, encodes, decodes, and asserts exact equality. It is a correctness example, not a compression benchmark on a person.
+Expected output:
 
-## Reproduce the public-data benchmark
-
-
-Use Python 3.11 or 3.12 for CPU data work. Install [bcftools 1.24](https://github.com/samtools/bcftools/releases/tag/1.24) on `PATH`; its official release archive bundles HTSlib. The measured Linux training environment used Python 3.11.15, Torch 2.10.0+cu128, and flash-linear-attention 0.5.2. Commit any local modifications before measurements; entry points record and require clean source.
-
-```bash
-python -m pip install -r requirements.txt
-python -m pip install --no-deps -e .
-DEMO_DATA="$HOME/reticular-diploid-demo-data"
-VOCAB_SHA=692c032232df5667ab1323b30f10b1db9ffad105f42cef3a02280bc758e2f352
-
-python -m reticular_diploid.experiments.download_public_1000g --output "$DEMO_DATA/inputs"
-python -m reticular_diploid.experiments.prepare_public_1000g \
-  --vcf "$DEMO_DATA/inputs/chr22.vcf.gz" \
-  --vcf-sha256 91aeaf0d1e805cf4223c5cbf12e22afc28db1709054c42bd668337219f8fddcc \
-  --pedigree "$DEMO_DATA/inputs/pedigree.txt" --panel "$DEMO_DATA/inputs/panel.tsv" \
-  --reference "$DEMO_DATA/inputs/chr22.fa" --output "$DEMO_DATA/prepared"
-python -m reticular_diploid.experiments.benchmark_public_diploid \
-  --prepared "$DEMO_DATA/prepared" --tokenizer tokenizer/vocab.npz \
-  --tokenizer-sha256 "$VOCAB_SHA" --output "$DEMO_DATA/tokenization.json"
-python -m reticular_diploid.experiments.build_public_diploid_corpus \
-  --prepared "$DEMO_DATA/prepared" --tokenizer tokenizer/vocab.npz \
-  --tokenizer-sha256 "$VOCAB_SHA" --output "$DEMO_DATA/corpus"
+```text
+Exact synthetic round-trip: 82,401 allele dosages, 3 tokens.
 ```
 
-Outputs must be outside every Git checkout. Attempts are immutable: use a new output location or an explicit exact resume, rather than replacing failed results. The approximately 446 MB chromosome VCF is downloaded with publisher MD5 and SHA-256 checks. Input release, coordinate convention, normalization, symbolic-allele exclusion, missing-call failure, and split rules are frozen in `configs/data.json`. No cohort MAF filter changes the externally fixed allele universe.
+The example creates synthetic dosages using one released motif and a residual, verifies the vocabulary checksum, and asserts exact reconstruction. Its three-token output is an illustration, not a person's benchmark result.
 
-The standalone pipeline has rebuilt byte-identical cohort, canonical streams, windows, teacher scores, and teacher weights from these public inputs on macOS; an independent Linux preparation also matched. Expected payload hashes are available in the frozen configurations and result receipts.
+**Next:** [download the public calls and reproduce the measured benchmark](docs/reproduction.md). The source VCF is approximately 446 MB; full preparation requires bcftools. The tokenizer itself can run with NumPy alone via `tokenizer/codec.py`.
 
-`tokenizer/vocab.npz` stores selected motif allele ranks, dosage states, and deterministic inference tie ordering. `variants.tsv.gz` maps normalized chromosome/position/REF/ALT identities to ranks. `config.json` specifies all IDs and residual grammar. Motifs combine by maximum dosage; adjacent R1/R2 pairs add remaining dosage and identify its allele rank. The encoder consumes dosages 0/1/2, never haplotype phase. `tokenizer/codec.py` also runs independently with NumPy alone. Exhaustive synthetic tests bind canonical sequence identity and reject malformed residuals or dosage overflow.
+## What is in this release?
 
+| Component | Status |
+|---|---|
+| Frozen block 589 vocabulary, variant map, encoder and decoder | Released; checksummed |
+| Public-data download, preprocessing and benchmark pipeline | Released |
+| Compression and motif-frequency aggregates; figure-generation code | Released |
+| Reviewed biobank NTP aggregate curve | Released; controlled-data experiment not independently reproducible here |
+| Public causal-model and synthetic-teacher recipes | Experimental; see [research notes](RESEARCH.md) |
+| Trained model checkpoints | Not included |
+| Vocabulary discovery and fitting algorithms | Proprietary; not included |
 
-## How the representation works
+The public small-model experiments are supplementary. Their archived window-owned NTP scores have an evaluation caveat and are not presented as normalized complete-stream likelihoods. This repository's independently reproducible claim is frozen-dictionary tokenization and reconstruction.
 
-A selected motif identifies multiple allele-specific positions. D1 and D2 token states specify dosage coverage; overlapping motifs combine by maximum dosage. Adjacent R1/R2 residual pairs encode any remaining dosage and its allele rank. Decoding reconstructs every callable 0/1/2 dosage exactly. Because the input is dosage rather than phased homologs, changing haplotype phase cannot change the input representation.
-
-The frozen motifs, token meanings, variant mapping, and deterministic inference code are public. **Vocabulary discovery, candidate generation, and fitting optimization remain proprietary.** Reproducing the published encoder does not require refitting the dictionary.
-
-## Tests and experimental modeling
+## Tests and provenance
 
 ```bash
 python -m pip install '.[test]'
-python -m pytest -q tests/test_frozen_diploid.py tests/test_release_bundle.py
+python -m pytest -q tests/test_frozen_diploid.py tests/test_release_bundle.py tests/test_motif_frequency.py
 ```
 
-[Research notes and training recipes](RESEARCH.md) preserve the causal-model and synthetic-teacher experiments, including negative results. Those extensions are experimental: archived window-owned NTP scores are not normalized complete-stream likelihoods, corrected measurements are not packaged here, and no trained model weights are included. The historical large architecture is a reference configuration, not a public-data training result. Additional-region configurations are included for development; this release supplies only the block 589 dictionary.
+CI checks the codec, shipped artifact hashes, public preprocessing and acquisition logic on Python 3.11 and 3.12. [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) records release-file hashes; [release review](RELEASE_REVIEW.md) documents verification scope. Contributions and reproduction reports are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-See [release review](RELEASE_REVIEW.md) for provenance and verification scope, [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) for file hashes, and [NOTICE](NOTICE) / [LICENSE](LICENSE) for attribution and licensing.
+## Citation and acknowledgements
 
-## Data acknowledgements
+Use [CITATION.cff](CITATION.cff) to cite this software, including the commit you used. Cite the underlying data publication separately.
+
 
 The data are from [IGSR's high-coverage 1000 Genomes collection](https://www.internationalgenome.org/data-portal/data-collection/1000genomes_30x/). Cite [Byrska-Bishop et al., Cell 2022](https://pmc.ncbi.nlm.nih.gov/articles/PMC9439720/). Samples originated from the NIGMS Human Genetic Cell Repository at the Coriell Institute for Medical Research; sequencing was generated at the New York Genome Center with NHGRI support (3UM1HG008901-03S1 and 3UM1HG008901-04S2). We acknowledge the sample donors. See the [provider acknowledgement statement](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/20200526_1000G_2504plus698_high_cov_data_reuse_README.txt). Source data retain their providers' terms.

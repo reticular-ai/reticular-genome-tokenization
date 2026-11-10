@@ -11,3 +11,9 @@ Historical development audits reported exact reconstruction and private/public s
 The retained MIT notice covers existing code; NOTICE states the release license for Reticular additions and the frozen artifact. External runtime dependencies and genomic source data retain their own terms. The provider acknowledgement statement was reviewed for the release. This is a repository content review, not certification by a data provider.
 
 Release verification: 85 CPU tests passed on Python 3.12, including the shipped dictionary round-trip and manifest checks. Three macOS numerical-runtime warnings arose in an existing synthetic ridge-baseline test; its assertions passed. No warning was suppressed. The standalone example reconstructed 82,401 synthetic dosages exactly. CI runs the tokenizer, public-data preprocessing and acquisition tests on Python 3.11 and 3.12.
+
+## Researcher-facing evidence update
+
+The public benchmark was rerun using release commit ac9ef0e9f16064fc1f95948a9fa63d8393b8b4d0 against the cached, checksum-verified public cohort; all 455 development people reconstructed exactly and aggregate results matched. No new data download or test evaluation is claimed. Motif-frequency figures use aggregate emitted-token counts from canonical development streams.
+
+The author additionally requested public inclusion of the reviewed PR #359 biobank aggregate curve and supplied the 707-token mean from a separate calculation. The curve is copied unchanged from the pinned PR record; the length is separately labeled author-reported and has not been independently audited. Only aggregate counts and losses are added, with no controlled-data dictionary, graph features, participant rows or model weights.
