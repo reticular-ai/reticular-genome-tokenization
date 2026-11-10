@@ -1,0 +1,305 @@
+{
+  "schema_version": "reticular-public-source-snapshot/v1",
+  "source_commit": "490e9a1cd2105118336d136570a4ea98b900889f",
+  "publication_authorized": true,
+  "files": {
+    "reticular_diploid/data/frozen_diploid.py": {
+      "source": "pgs/data/frozen_diploid.py",
+      "sha256": "f485450c3c004a5f1bf2658ab2dcefb10ba05c3a50d89bd0431cc6910e2f49a2"
+    },
+    "reticular_diploid/data/public_diploid_corpus.py": {
+      "sha256": "cdd425a7eca7a085686c23fe1ed61506823e1c0315a9129fb1cd876218b42772",
+      "source": "pgs/data/public_diploid_corpus.py"
+    },
+    "reticular_diploid/models/public_kimi.py": {
+      "sha256": "f2d0c61369646d26cc28fdfd32c6a9ec728323a9e4a46e12f205670c24b51ea8",
+      "source": "pgs/models/public_kimi.py"
+    },
+    "reticular_diploid/models/kimi.py": {
+      "sha256": "a02c3745ea39e7f935c71771758cfaee730a5a1ca341216191b6940ecdaa172b",
+      "source": "pgs/models/kimi.py"
+    },
+    "reticular_diploid/models/kimi_moe.py": {
+      "sha256": "5d222da6ef2e53e206928509be317f8a8248e32028f31e6816c6660da6298848",
+      "source": "pgs/models/kimi_moe.py"
+    },
+    "reticular_diploid/models/kimi_mla.py": {
+      "sha256": "7e82a96963a67f56e951bf7e31a65870953411b1c1a5f95e38ca2296654b4095",
+      "source": "pgs/models/kimi_mla.py"
+    },
+    "reticular_diploid/models/haplotype_optimizers.py": {
+      "sha256": "db36d52345b078e372948fdb2c5f22a62c4d97e28124b3241005e6be3571a5b3",
+      "source": "pgs/models/haplotype_optimizers.py"
+    },
+    "reticular_diploid/analysis/public_diploid_figures.py": {
+      "source": "pgs/analysis/public_diploid_figures.py",
+      "sha256": "cd23cd0ed4630c0e4d6d6fd894fcf34e48662bfd88a71c2ede2ffdad7fb76dc8"
+    },
+    "reticular_diploid/experiments/download_public_1000g.py": {
+      "source": "pgs/experiments/download_public_1000g.py",
+      "sha256": "b608e08deea11adcb2d8586e5173b07c742c3ebdd51ecca35b0add146744e4cf"
+    },
+    "reticular_diploid/experiments/prepare_public_1000g.py": {
+      "source": "pgs/experiments/prepare_public_1000g.py",
+      "sha256": "b10591cf65cddab80b58a30ce1b05ddefd7d2c31fb71acdba384f00a95d07238"
+    },
+    "reticular_diploid/experiments/benchmark_public_diploid.py": {
+      "source": "pgs/experiments/benchmark_public_diploid.py",
+      "sha256": "2a0673d0cfdcbf6bea7a7597829cf6d015becdc0b566e06c6396d40b69870612"
+    },
+    "reticular_diploid/experiments/build_public_diploid_corpus.py": {
+      "sha256": "b88c947df96d8d71750cb3d4aa95860b8b4f9f2a38af9fb64ecb185fd7772e8d",
+      "source": "pgs/experiments/build_public_diploid_corpus.py"
+    },
+    "reticular_diploid/experiments/train_public_diploid.py": {
+      "sha256": "ac90f37fb20a48d5a786f3f35ac1c4949dec2bf76e282145b70d3561a22669d3",
+      "source": "pgs/experiments/train_public_diploid.py"
+    },
+    "reticular_diploid/experiments/evaluate_public_diploid.py": {
+      "sha256": "992cf205a8bda5dfda81382e091b591c13e21f4f4f3101259cc0b09451c4bd0a",
+      "source": "pgs/experiments/evaluate_public_diploid.py"
+    },
+    "reticular_diploid/experiments/public_additive_teachers.py": {
+      "source": "pgs/experiments/public_additive_teachers.py",
+      "sha256": "09dd05c3d1964ecb419b3027b83e5e5d452927bfcffdae398ebc356610897bd7"
+    },
+    "reticular_diploid/experiments/public_teacher_baselines.py": {
+      "source": "pgs/experiments/public_teacher_baselines.py",
+      "sha256": "a3045dba1d26e011bcd7988367942b59c83e7ef60902dc3915561847522adf3f"
+    },
+    "reticular_diploid/experiments/distill_public_diploid.py": {
+      "source": "pgs/experiments/distill_public_diploid.py",
+      "sha256": "8a549b6ef621019b81b16291696874e746c9c03ff6a04dec179a5404633cc31b"
+    },
+    "reticular_diploid/experiments/canary_public_diploid.py": {
+      "sha256": "df2ea9fca04496a859460a14ddfd114f74ec70489152e3c8a2c58057afd31576",
+      "source": "pgs/experiments/canary_public_diploid.py"
+    },
+    "reticular_diploid/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "public packaging"
+    },
+    "reticular_diploid/data/diploid_windows.py": {
+      "sha256": "754036e206568647964721ce742a22d1bc4c007421ad02e4d0cee9c4a1a2232f",
+      "source": "pgs/data/diploid_windows.py (four pure functions)"
+    },
+    "tests/test_download_public_1000g.py": {
+      "source": "tests/test_download_public_1000g.py",
+      "sha256": "f22e660f30031ce2852120fdf59027dae419516550dddcf95bcfa1d13ca34d9b"
+    },
+    "tests/test_prepare_public_1000g.py": {
+      "source": "tests/test_prepare_public_1000g.py",
+      "sha256": "ced213fb66ffd88482084b8228f245f29884794530c94906540b7ac9492b1a8c"
+    },
+    "tests/test_benchmark_public_diploid.py": {
+      "sha256": "5b4caa11425a6337158c0681e8f332c3fc9318818620d61a2d33440b1373541a",
+      "source": "tests/test_benchmark_public_diploid.py"
+    },
+    "tests/test_build_public_diploid_corpus.py": {
+      "sha256": "5f6c4a2137a1cd47735ea2960f0127215394fef41619d9703aa28eff88999a48",
+      "source": "tests/test_build_public_diploid_corpus.py"
+    },
+    "tests/test_train_public_diploid.py": {
+      "sha256": "0e063d8d9824c537dafe1d91cd53a74cead12fbacf8e2aa6b9cf3a0eacf61619",
+      "source": "tests/test_train_public_diploid.py"
+    },
+    "tests/test_evaluate_public_diploid.py": {
+      "source": "tests/test_evaluate_public_diploid.py",
+      "sha256": "7e67cfc9a1aa63e668c771d62bbbd9c4301b5cdb4cc27d173ceb967232cb911e"
+    },
+    "tests/test_public_additive_teachers.py": {
+      "source": "tests/test_public_additive_teachers.py",
+      "sha256": "2cd3583a30cbe88eeaab1c8443d55d78734a6b3c65e289ebf4a743f1b13336b5"
+    },
+    "tests/test_public_teacher_baselines.py": {
+      "source": "tests/test_public_teacher_baselines.py",
+      "sha256": "5e79e8459766084009a587f91196a3a81242e3ed69769a23e23195b270107341"
+    },
+    "tests/test_distill_public_diploid.py": {
+      "sha256": "a0a617b1f02cb579a4d11437f44fdc7adeffe6e530d6ec86116beddb09aebe7a",
+      "source": "tests/test_distill_public_diploid.py"
+    },
+    "tests/test_public_diploid_corpus.py": {
+      "sha256": "3fb9ea67a0900307f08b798024c13d4ad274103bd5ee89acdbbb10eb9cf3bf84",
+      "source": "tests/test_public_diploid_corpus.py"
+    },
+    "tests/test_frozen_diploid.py": {
+      "sha256": "5b4877909bef164418a74d2b6a1cd420715e9798da68a0b8eafe51091f3455c9",
+      "source": "tests/test_frozen_diploid.py (public tests only)"
+    },
+    "tests/test_public_model.py": {
+      "sha256": "990849e2485e06be308b1f5b46270922efb5a490c2ad87caae4f347c2a4cfaf5",
+      "source": "public packaging"
+    },
+    "configs/data.json": {
+      "sha256": "10af514d5bae7a5977c98ee7599327d8f697659d629b18daabb0c109e3e121c9",
+      "source": "public packaging"
+    },
+    "configs/ntp.json": {
+      "sha256": "2ff65d6533ab6b264e564a63e9635956b8d6e8a1bf9aa633476a61c5b3964eb2",
+      "source": "public-1000g-block589-kimi-small-v1.json"
+    },
+    "configs/distillation.json": {
+      "sha256": "5a9934c480a221fc07c694a58597dac136baf03407b96070be854d3bf385841c",
+      "source": "public-1000g-block589-distillation-v1.json"
+    },
+    "tokenizer/SHA256SUMS": {
+      "sha256": "313f3b8881bbcdabba445e813f2912f7a8e909ce2fe08a2848da0cdfe5535da9",
+      "source": "selected-only public-data tokenizer bundle"
+    },
+    "tokenizer/codec.py": {
+      "sha256": "ea6639b8c19d48f8d2e834fa264fad2741393d92a2c7f5810c7a29fbae045cb7",
+      "source": "selected-only public-data tokenizer bundle"
+    },
+    "tokenizer/config.json": {
+      "sha256": "aa8ffaeb5a045f7c9dfaffef81aef1ae88eb8671529c89d47453a5bc8e403cb6",
+      "source": "selected-only public-data tokenizer bundle"
+    },
+    "tokenizer/variants.tsv.gz": {
+      "sha256": "1ce8a7352da25974067adaa4c61efc9111fe02e2de2f0add428bfe7be58428ac",
+      "source": "selected-only public-data tokenizer bundle"
+    },
+    "tokenizer/vocab.npz": {
+      "sha256": "692c032232df5667ab1323b30f10b1db9ffad105f42cef3a02280bc758e2f352",
+      "source": "selected-only public-data tokenizer bundle"
+    },
+    "requirements-linux-cuda.txt": {
+      "sha256": "3449ccd1bac406e55776483f7bfe74947ef35ab0a027e322735eaceb98a48382",
+      "source": "public packaging"
+    },
+    "requirements.txt": {
+      "sha256": "59489ea7794e7704a970012ac7b894facc289c20418102be23e8d227ac9d2b03",
+      "source": "public packaging"
+    },
+    "LICENSE": {
+      "sha256": "37ad8847daa52731831540da20b679724a8b06113636ccde46ff97883a70044c",
+      "source": "LICENSE"
+    },
+    "NOTICE": {
+      "sha256": "f8e77fd455ccf94c42cc5a20340560194603050c72e8b8c0cd2e40a57b67c5c3",
+      "source": "public packaging"
+    },
+    ".gitignore": {
+      "sha256": "bcfc45d912b2dc6a7ba19b6726c708f93078d7d84894c2f3dab6b4037c2504dc",
+      "source": "public packaging"
+    },
+    "pyproject.toml": {
+      "sha256": "f708fdf9d739af06ba6eb13da8baa128fae778d6750dac3186e307c509d5b858",
+      "source": "public packaging"
+    },
+    "reticular_diploid/experiments/evaluate_public_distillation.py": {
+      "source": "pgs/experiments/evaluate_public_distillation.py",
+      "sha256": "55afd62f1ac20d730829fd06efe9a0995cb8671b77a65719753b91de63500427"
+    },
+    "tests/test_evaluate_public_distillation.py": {
+      "source": "tests/test_evaluate_public_distillation.py",
+      "sha256": "af07710437e842dca60e4f29697b70b9c2628426d5c6cdbce06e5abe528a63ab"
+    },
+    "configs/distillation-v2.json": {
+      "source": "experiments/haplotype_pretraining/public-1000g-block589-distillation-v2.json",
+      "sha256": "e50288c43db66846533b3652c192b0ff52e773aab39ab93cc3e27156167b931f"
+    },
+    "configs/historical-reference.json": {
+      "source": "experiments/haplotype_pretraining/kimi-block589-muon-protocol-v1.json (architecture only; no controlled bindings)",
+      "sha256": "7caffc16bb3aaf05efe97aac337fd72ad83ee98d693ee501e542f534c4bb35b7"
+    },
+    "reticular_diploid/experiments/run_public_distillation.py": {
+      "source": "pgs/experiments/run_public_distillation.py",
+      "sha256": "fb01239bdf5bafd50b385abeac8d07a947d0e4224f0f270c48a37cb095dfaecd"
+    },
+    "tests/test_run_public_distillation.py": {
+      "source": "tests/test_run_public_distillation.py",
+      "sha256": "5e9f1533a355476a25bf63c76a1573ab22fc5e07675bc086411237cfca71c547"
+    },
+    "reticular_diploid/data/causal_diploid_evaluation.py": {
+      "source": "pgs/data/causal_diploid_evaluation.py",
+      "sha256": "65ca6e6589555ad5e5a350db096ddcaa548d9f8bfbdbb5771e275b6adb6bfa17"
+    },
+    "tests/test_causal_diploid_evaluation.py": {
+      "source": "tests/test_causal_diploid_evaluation.py",
+      "sha256": "3b1e927d379fb6b79eac16243fda991b3513c2732df7eab5a505aaf4f60cbb1f"
+    },
+    "README.md": {
+      "source": "publication-review draft",
+      "sha256": "1f19165b81a882d232970f291ee2033e9b7f8ab2021b88e256473725f03c3167"
+    },
+    "reticular_diploid/analysis/public_distillation_figures.py": {
+      "source": "pgs/analysis/public_distillation_figures.py",
+      "sha256": "1bccf0b2c6fae87342958e9d68fcd2d26fee5c1e3d362adc9addce5e98ab7329"
+    },
+    "reticular_diploid/analysis/public_distillation_uncertainty.py": {
+      "source": "pgs/analysis/public_distillation_uncertainty.py",
+      "sha256": "b4c752b21c7a9b737f6b987a942b1ba158e0e4c4f2051a688a5fc9249a46ef35"
+    },
+    "reticular_diploid/experiments/evaluate_public_test.py": {
+      "source": "pgs/experiments/evaluate_public_test.py",
+      "sha256": "89e6c1a2517834a92a844f8b278fa991bf51c3f73d1e03608bd53634115c65f8"
+    },
+    "tests/test_public_diploid_figures.py": {
+      "source": "tests/test_public_diploid_figures.py",
+      "sha256": "b7a78e0f15a72c6e8754c2d7a5490ac9e7ab5632a9307327ff62e5de342aa355"
+    },
+    "tests/test_public_distillation_figures.py": {
+      "source": "tests/test_public_distillation_figures.py",
+      "sha256": "d047df7629ce36f7c5f9192963878ceeabe83de14d2c77467f84b959f19942d8"
+    },
+    "tests/test_public_distillation_uncertainty.py": {
+      "source": "tests/test_public_distillation_uncertainty.py",
+      "sha256": "b5e86e886c8f1f78edaa1b573e5cac00df7815729f05740f83bcfb7c98ee757e"
+    },
+    "tests/test_evaluate_public_test.py": {
+      "source": "tests/test_evaluate_public_test.py",
+      "sha256": "5f4b59f797d8b9a3f5147783236defc9633926b84c4889022cf2d94412215c95"
+    },
+    "configs/final-evaluation.json": {
+      "source": "experiments/haplotype_pretraining/public-1000g-block589-final-evaluation-v1.json",
+      "sha256": "f6c09ae5d87eb6e57efa8f70a3587d57fdad8e3cc0000d8fc7964947aecbcc3d"
+    },
+    "reticular_diploid/experiments/package_public_students.py": {
+      "source": "pgs/experiments/package_public_students.py",
+      "sha256": "e5f940d6eb11b8c0e1a01c4b6dad23b5308c89ad3313b647008ef119d961af42"
+    },
+    "tests/test_package_public_students.py": {
+      "source": "tests/test_package_public_students.py",
+      "sha256": "4cf0e171f33db3ac75beca1ac7524b0078a51fe462457c871f1a1a8a81c89812"
+    },
+    "configs/kimi-small-long-v2.json": {
+      "sha256": "b0f8dffc5ec9f77abc137e2fcf8f80c6a645d1b41d1725752d9110fa3cd94cda",
+      "source": "experiments/haplotype_pretraining/public-1000g-block589-kimi-small-long-v2.json"
+    },
+    "configs/kimi-small-motif30544-v3.json": {
+      "sha256": "184b1f01a4cb9ff6018d8bdb993526504e7b11fe7a427406542f54e3c848b387",
+      "source": "experiments/haplotype_pretraining/public-1000g-block589-kimi-small-motif30544-v3.json"
+    },
+    "configs/block200-data.json": {
+      "source": "public-data protocol; fitting settings withheld",
+      "sha256": "ab2a2b7936498c86d1af75354eb80e2e927f2c1fa2c14713167d02fbcb298385"
+    },
+    "configs/block216-data.json": {
+      "source": "public-data protocol; fitting settings withheld",
+      "sha256": "9f1bcf3af251e7822501a28ae0b62cc0d8a9e3ac3ea40b407da2b89215c9f020"
+    },
+    "RESEARCH.md": {
+      "source": "public release packaging",
+      "sha256": "fad19ba3eeb848e7d3bddc67bfc70dd1850ad1e8a89be393c1d4835cd7d0300c"
+    },
+    "RELEASE_REVIEW.md": {
+      "source": "public release packaging",
+      "sha256": "0d5eeb59a5695b6be275086433f2a88b3fe20a75ad97b65ad3d3cbb04d1b9f3d"
+    },
+    "tests/test_release_bundle.py": {
+      "source": "public release packaging",
+      "sha256": "ce8a725075d8a3eb7fa4d86fea1d3c861e8f99366f45ed002e7e886e9b4b2aa9"
+    },
+    "examples/roundtrip.py": {
+      "source": "public release packaging",
+      "sha256": "e63c94920484a7954d1e27dc4330d6dcaf62041bf220a4a1783e7cf4221776e2"
+    },
+    ".github/workflows/test.yml": {
+      "source": "public release packaging",
+      "sha256": "2fcb2257633c26ad14dc142cdef77e7af3fcd6f02b17e105428124650d12df05"
+    }
+  },
+  "previous_export_source_commit": "c2f51d8e36aa7169478bc7fb284893e53f0a7ce5",
+  "release_scope": "public-data block589 frozen tokenizer and research code; no weights"
+}

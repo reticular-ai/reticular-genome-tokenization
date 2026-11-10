@@ -1,0 +1,73 @@
+{
+  "experiment_id": "public-1000g--chr22-block589--final-evaluation--v1",
+  "scope": "One reserved-test evaluation after development-only selection is frozen",
+  "cohort_sha256": "c8b7c891467d24c9855c5d473d9a44108e71d49a20a9724703680b0892c9a40e",
+  "tokenizer_sha256": "692c032232df5667ab1323b30f10b1db9ffad105f42cef3a02280bc758e2f352",
+  "canonical_sha256": "7e24a940ca016b26363d9d18e81fc59fe86edc16a1f36a41037b51ee116676b8",
+  "teacher_scores_sha256": "716b9fee5ac6df12415a28b182bd34bb0804469702cab5aaade21a9f6e3a32d4",
+  "teacher_weights_sha256": "ce008e75deb688c2f749bd943f64a44df5aa58b4ac6a9f40c6d8465e7e11d6fe",
+  "partition_counts": {"training": 400, "validation": 55, "test": 48},
+  "student_grid": {
+    "effect_variants": [16, 128, 1024],
+    "training_people": [32, 128, 400],
+    "seeds": [20261023, 20261024],
+    "arms": ["scratch", "pretrained", "joint"],
+    "expected_models": 54,
+    "optimizer_steps": 1000,
+    "allowed_recipe_sha256": [
+      "5a9934c480a221fc07c694a58597dac136baf03407b96070be854d3bf385841c",
+      "e50288c43db66846533b3652c192b0ff52e773aab39ab93cc3e27156167b931f"
+    ],
+    "selection": "Existing minimum-validation-MSE checkpoint; exact ties retain the earliest step",
+    "comparison": "Paired label subsets, person draws and supervised updates; pretraining and joint auxiliary compute reported separately"
+  },
+  "ntp": {
+    "checkpoint_step": 2000,
+    "recipe_sha256": "2ff65d6533ab6b264e564a63e9635956b8d6e8a1bf9aa633476a61c5b3964eb2",
+    "evaluation_ownership": "prefix_causal",
+    "context": 256,
+    "stride": 128,
+    "selection": "Retain the existing frozen endpoint; legacy proxy selection is not repeated on test",
+    "metrics": ["cross_entropy_nats", "perplexity", "bits_per_person", "scored_targets"]
+  },
+  "student_context": {
+    "training": 2048,
+    "test_padding_rule": "Use 2048 unless a complete test stream needs more slots, then use 4096; never crop",
+    "backbone_maximum": 4096,
+    "overflow": "Abort and report the unsupported stream length; do not change the model or discard the person"
+  },
+  "baselines": {
+    "methods": ["direct_genotype_ridge", "token_count_ridge", "genotype_pca128_ridge", "effect_locus_genotype_ridge"],
+    "alphas": [0.01, 1.0, 100.0, 10000.0, 1000000.0],
+    "selection": "Reuse the alpha selected on validation for each fixed method/teacher/sample-count/seed",
+    "pca": "128 unwhitened PCs of centered raw dosages, fitted on all 400 training genotypes only",
+    "privileged_control": "Effect-locus ridge receives causal variant identities; the supplied-beta dosage oracle receives identities and weights"
+  },
+  "teacher_normalization": "Frozen full-training means and population standard deviations; no test normalization or recalibration",
+  "uncertainty": {
+    "unit": "Whole published-pedigree connected components",
+    "method": "Paired percentile bootstrap, conditional on fixed teachers and fitted models",
+    "draws": 2000,
+    "seed": 20261025,
+    "confidence_level": 0.95,
+    "comparisons": ["pretrained minus scratch", "joint minus scratch"],
+    "seed_figures": "Show both optimization seeds, or their mean and range; do not label seed ranges as confidence intervals",
+    "limitations": "No bootstrap uncertainty over vocabulary discovery, teacher sampling or independent NTP pretraining seeds"
+  },
+  "unsealing_gate": [
+    "All 54 predeclared primary students have completed their frozen schedules",
+    "Verify selected checkpoint hashes and validation-only selection against preserved curves",
+    "Verify public input, dictionary, teacher and NTP-parent identity",
+    "Write an immutable selection certificate before loading test genotypes for scoring",
+    "Pass synthetic target ownership, residual grammar, oracle, metric and family-bootstrap canaries"
+  ],
+  "reporting": [
+    "Report every predeclared teacher and arm, including negative R-squared and failed controls",
+    "Count genotype reconstruction over the retained allele catalog; do not claim phased or whole-DNA reconstruction",
+    "Record actual sequence lengths, token exposure, supervised person draws, hardware, runtime and peak memory",
+    "Keep participant genotypes, token streams, scores, predictions and embeddings outside Git",
+    "No model, teacher, tokenizer or hyperparameter selection from final-test outcomes",
+    "Preserve the first evaluation attempt and diagnose code defects with synthetic fixtures before any repeat",
+    "Publication and weight release require explicit final human privacy/IP/license/provenance authorization"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "experiment_id": "public-1000g--chr22-block589--diploid--tokenization--v1",
+  "interval": {
+    "block_id": 589,
+    "genome_build": "GRCh38",
+    "chromosome": "22",
+    "start": 43317956,
+    "end": 46074513,
+    "coordinate_system": "1-based-inclusive",
+    "span_bases": 2756558
+  },
+  "public_release": "20220422_3202_phased_SNV_INDEL_SV",
+  "vcf_publisher_md5": "a2653cc7a1c8d03a96ca4f14d0fabdd2",
+  "vcf_size_bytes": 445701977,
+  "vcf_sha256": "91aeaf0d1e805cf4223c5cbf12e22afc28db1709054c42bd668337219f8fddcc",
+  "index_publisher_md5": "33a3d517ba4d93fe40fd6db4b78329a7",
+  "panel_sha256": "b4023dc6ee2d62ee89c8d4d347db4d348e65518d66d346574cdae7a4bbd76858",
+  "pedigree_sha256": "0f9cfcbadf85fc10a39af88a969c1ae46c8c8efa15f7d5288ef59be82a7a20f9",
+  "reference_fasta_sha256": "ce3ee1ca39356238f7aee438a40a88b4f1b9d80b316b263e16fb12402212d10f",
+  "ancestry": "EUR in published phase-3 panel; use high-coverage genotypes",
+  "split": {
+    "seed": 20261023,
+    "policy": "SHA256 full pedigree connected components",
+    "fractions": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "variant_policy": "release-fixed PASS/unfiltered sequence alleles, reference-normalized, allele-specific split, no cohort MAF filtering",
+  "missing_policy": "fail; no imputation",
+  "locked_test": "frozen during preparation; excluded from tokenizer selection and development benchmarks",
+  "tokenizer": {
+    "mode": "frozen inference only",
+    "sha256": "692c032232df5667ab1323b30f10b1db9ffad105f42cef3a02280bc758e2f352",
+    "training_only_fit": true,
+    "discovery_implementation": "withheld"
+  }
+}

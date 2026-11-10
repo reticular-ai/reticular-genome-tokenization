@@ -1,0 +1,4 @@
+Code derived from the MIT-licensed Reticular pgs repository; its existing copyright notice is retained in LICENSE. Reticular additions and the supplied frozen tokenizer are distributed under the same MIT license. Proprietary vocabulary-discovery and fitting implementations are not included or licensed by this release.
+KDA kernels use flash-linear-attention; PyTorch and other external runtime packages retain their own licenses and are not vendored here.
+1000 Genomes source data retain their providers' terms. IGSR, NYGC, NHGRI, Coriell and donor acknowledgements appear in README.md.
+No All of Us participant data, fitted artifacts, or model weights are included. No pretrained model weights are included in this release.

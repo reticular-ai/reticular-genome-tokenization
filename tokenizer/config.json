@@ -1,0 +1,49 @@
+{
+  "chromosome": "22",
+  "content_vocabulary_size": 8186,
+  "coverage_semantics": "max_motif_plus_residual/v1",
+  "files": {
+    "codec.py": {
+      "bytes": 9598,
+      "sha256": "ea6639b8c19d48f8d2e834fa264fad2741393d92a2c7f5810c7a29fbae045cb7"
+    },
+    "variants.tsv.gz": {
+      "bytes": 513368,
+      "sha256": "1ce8a7352da25974067adaa4c61efc9111fe02e2de2f0add428bfe7be58428ac"
+    },
+    "vocab.npz": {
+      "bytes": 918416,
+      "sha256": "692c032232df5667ab1323b30f10b1db9ffad105f42cef3a02280bc758e2f352"
+    }
+  },
+  "genome_build": "GRCh38",
+  "motif_count": 3662,
+  "motif_entries": 7324,
+  "motif_ids": "CSR row m has D1=2*m and D2=2*m+1; motif_ranks contains zero-based allele ranks",
+  "ordering": "genomic median motif anchor; fixed greedy gain and ties in codec.py; adjacent residual pairs",
+  "provenance": {
+    "cohort_sha256": "c8b7c891467d24c9855c5d473d9a44108e71d49a20a9724703680b0892c9a40e",
+    "locked_test_used": false,
+    "public_data_only": true,
+    "training_rows_sha256": "83a9cd202c4a1037099b4f00c1861868dfa9c88f1e30d570ff4a331269b193e3",
+    "validation_used_for_fit": false
+  },
+  "reconstruction": "maximum motif dosage plus remaining residual dosage, each allele in [0,2]",
+  "residual_ids": {
+    "R1": "motif_entries+(remaining_dosage-1)*first+variant_rank//second",
+    "R2": "motif_entries+2*first+variant_rank%second",
+    "first": 287,
+    "second": 288
+  },
+  "schema_version": "reticular-frozen-diploid/v1",
+  "special_tokens": {
+    "bos": 8187,
+    "eos": 8189,
+    "forward": 8190,
+    "pad": 8186,
+    "reverse": 8191,
+    "sep": 8188
+  },
+  "total_vocabulary_size": 8192,
+  "variant_count": 82401
+}

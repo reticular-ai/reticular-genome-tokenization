@@ -1,0 +1,57 @@
+{
+  "experiment_id": "public-1000g--chr22-block589--teacher-recovery--v2",
+  "hypothesis": "NTP initialization improves matched full-region neural recovery of fixed additive teachers at equal supervised updates and sample counts.",
+  "ntp_recipe_sha256": "2ff65d6533ab6b264e564a63e9635956b8d6e8a1bf9aa633476a61c5b3964eb2",
+  "scores_sha256": "716b9fee5ac6df12415a28b182bd34bb0804469702cab5aaade21a9f6e3a32d4",
+  "weights_sha256": "ce008e75deb688c2f749bd943f64a44df5aa58b4ac6a9f40c6d8465e7e11d6fe",
+  "effect_variants": [
+    16,
+    128,
+    1024
+  ],
+  "arms": [
+    "scratch",
+    "pretrained",
+    "joint"
+  ],
+  "training_people": [
+    32,
+    128,
+    400
+  ],
+  "seeds": [
+    20261023,
+    20261024
+  ],
+  "context": 2048,
+  "readout": "masked mean of all contextual content and true EOS states, LayerNorm, scalar linear output",
+  "initialization": "scratch random; pretrained and joint use identical validation-selected NTP checkpoint; paired head initialization",
+  "comparison": "equal supervised person draws and updates; report NTP initialization cost separately and extra joint FLOPs",
+  "training": {
+    "steps": 1000,
+    "batch_size": 2,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.01,
+    "gradient_clip": 1.0,
+    "evaluate_every": 100,
+    "joint_ntp_weight": 0.1,
+    "selection": "minimum validation teacher MSE, never test"
+  },
+  "resources": {
+    "cpu_threads": 4,
+    "gpu_memory_fraction": 0.2,
+    "maximum_worker_hours": 0.5,
+    "new_gpu_allocations": 0,
+    "canary_required": true,
+    "campaign_execution": "Verify storage-only equivalence to one completed v1 trial, then run the remaining predeclared two seeds x three sample sizes x three teachers x three arms within the aggregate budget; no test selection",
+    "campaign_additional_worker_hours": 2.5
+  },
+  "limitations": [
+    "Synthetic additive recovery is not clinical prediction or evidence of improvement over the supplied teacher",
+    "Only 55 validation people; all adaptive selections and screens are development results",
+    "Joint auxiliary NTP sees full-region context, exceeding the 256-token NTP pretraining windows",
+    "This recipe lists permitted comparisons; running a subset does not establish the unexecuted comparisons"
+  ],
+  "checkpoint_retention": "latest_and_best",
+  "checkpoint_file_contract": "latest.pt and best.pt are mutable training states; append every selected SHA/step to selection-history.jsonl; retain all learning curves; do not modify earlier v1 archives"
+}

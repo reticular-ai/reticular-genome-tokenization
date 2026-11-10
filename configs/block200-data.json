@@ -1,0 +1,47 @@
+{
+  "experiment_id": "public-1000g--chr5-block200--diploid--tokenization--v1",
+  "scope": "Public-data-only CPU tokenization; publication requires final human review",
+  "interval": {
+    "block_id": 200,
+    "genome_build": "GRCh38",
+    "chromosome": "5",
+    "start": 158826247,
+    "end": 162743572,
+    "coordinate_system": "1-based-inclusive",
+    "span_bases": 3917326,
+    "historical_boundary_source_sha256": "a1c94b68b6b90562461f4029985d73a0cba7ad0699d502490b87a5c56a8b1de5"
+  },
+  "public_release": "20220422_3202_phased_SNV_INDEL_SV",
+  "acquisition_mode": "indexed_region",
+  "vcf_artifact": "Deterministic bcftools --no-version regional extraction of the public source; not the complete chromosome VCF",
+  "vcf_publisher_md5": "662dd03be57e9239eb693917edcce3fe",
+  "whole_source_md5_verified": false,
+  "vcf_size_bytes": 41137766,
+  "vcf_sha256": "1c20f35afde0a3ae149ba048a9f2421f3b1028c3a3ed66213ce8c969979226da",
+  "index_publisher_md5": "54f202bec0e4c2190245e4c5611d8f45",
+  "index_sha256": "004fcfc0ba53484ae4a3558a830eb24bf009bdbde7287d61a6981ce992a00582",
+  "reference_gzip_sha256": "a29cb40486d4fcfcae187594809846df4cd4f10169045965bec987395ad714a2",
+  "reference_fasta_sha256": "7ab5ac17cf0b38b7061f8c910ea7f735d033bb80a2755bb748ea507b3ebe2783",
+  "panel_sha256": "b4023dc6ee2d62ee89c8d4d347db4d348e65518d66d346574cdae7a4bbd76858",
+  "pedigree_sha256": "0f9cfcbadf85fc10a39af88a969c1ae46c8c8efa15f7d5288ef59be82a7a20f9",
+  "ancestry": "EUR in published phase-3 panel; use high-coverage genotypes",
+  "membership_sha256": "5fa5bfdd3ecc67ff8bac2987c72e72a678a6bb3b2a1c87d010a9a240b98acbf0",
+  "split": {
+    "seed": 20261023,
+    "policy": "SHA256 full pedigree connected components",
+    "fractions": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "variant_policy": "release-fixed PASS/unfiltered sequence alleles, reference-normalized, allele-specific split, no cohort MAF filtering",
+  "missing_policy": "fail; no imputation",
+  "locked_test": "Do not encode, benchmark, or select on test individuals.",
+  "release": {
+    "proprietary_fitter_included": false,
+    "aou_artifacts_allowed": false,
+    "publication_authorized": false
+  },
+  "bcftools_acquisition_version": "bcftools 1.24"
+}
