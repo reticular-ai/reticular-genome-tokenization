@@ -1,4 +1,4 @@
-# Reproduce the block 589 benchmark
+# Reproduce the chromosome 22 regional benchmark
 
 Run commands from the repository root. Tokenization and preprocessing run on CPU; no GPU, cloud account, private Reticular repository, or phenotype data is required. The source chromosome VCF is approximately 446 MB; allow additional space for the reference, download ranges, normalized calls and dosage arrays. Full preparation time depends on network speed and CPU. A synthetic smoke test is available in the main README before undertaking the download.
 

@@ -138,7 +138,7 @@ def main():
                   if r['optimizer_update'] == h['selection']['original_preselected_reporting_step'])
     scores = chosen['canonical_target_ce_nats_per_token']
     fig = page('Human variation, in hundreds of tokens',
-               'Diploid block 589 · 8,192-token vocabulary · preselected 55K checkpoint',
+               '2.76 Mb on chromosome 22 · 8,192-token vocabulary · preselected 55K checkpoint',
                'Biobank / held-out evaluation',
                'Full sequences include three framing tokens. CE is pooled by scored targets.\nSelected-person / family exclusions apply; see docs/biobank.md. Source: PRs #372–373.')
     for x, value, label, detail in [

@@ -1,6 +1,6 @@
 # Public demo release review
 
-Release scope: block 589 public-data frozen vocabulary, inference codec, preprocessing and reproduction code, synthetic tests, and experimental modeling recipes. Publication was explicitly requested by the repository owner on 2026-11-09. This is a research demo, not a finished foundation-model release.
+Release scope: public-data frozen vocabulary for the 2.76 Mb chromosome 22 region, inference codec, preprocessing and reproduction code, synthetic tests, and experimental modeling recipes. Publication was explicitly requested by the repository owner on 2026-11-09. This is a research demo, not a finished foundation-model release.
 
 The release is a clean snapshot of standalone source f35bcb3 plus release documentation, smoke example and CI. Private repository history is not published. The 8,192-ID vocabulary SHA-256 is `692c032232df5667ab1323b30f10b1db9ffad105f42cef3a02280bc758e2f352`. Its metadata asserts public-data-only provenance, training-only fitting, and no locked-test use. All published payload hashes are recorded in SOURCE_MANIFEST.json; the manifest excludes itself.
 

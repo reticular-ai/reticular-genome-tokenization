@@ -7,7 +7,7 @@
 
 The headline compares the **2.76-million-base regional span** with the biobank’s **712-token mean full sequence**—approximately **3,870 bases of span per token**. It describes representation length, not byte compression of a complete DNA sequence: the reference, allele catalog and dictionary are shared side information. The independently fitted public demo averages ~1,450 tokens, or approximately 1,900 bases of span per token.
 
-Our All of Us block 589 experiment represents diploid genetic variation in **712 tokens per person on average** and achieves **0.553 pooled holdout cross-entropy (nats/token)** across **5,320 new individuals**. The model was trained on **268,491 individuals**; its reporting checkpoint was selected using the original 1,000-person validation set before the new holdout evaluation.
+Our All of Us experiment across a 2.76 Mb region on chromosome 22 represents diploid genetic variation in **712 tokens per person on average** and achieves **0.553 pooled holdout cross-entropy (nats/token)** across **5,320 new individuals**. The model was trained on **268,491 individuals**; its reporting checkpoint was selected using the original 1,000-person validation set before the new holdout evaluation.
 
 On the **3,817-person locked-test cohort**, the mean full sequence is **706 tokens** and CE is **0.545**. A further **1,503 within-family holdout individuals** bring the new evaluation to 5,320 people. Full sequence lengths include three framing tokens. [Exact results and evaluation scope →](docs/biobank.md)
 
@@ -61,7 +61,7 @@ This encodes **genetic differences relative to a shared reference and allele cat
 | Residual-only mean | 10,650.6 | 10,705.2 |
 | Exact reconstruction | 400 / 400 | 55 / 55 |
 
-**Region:** GRCh38 chr22:43,317,956–46,074,513, inclusive (block 589). **Catalog:** 82,401 normalized allele-specific variants. **Dictionary:** 3,662 motifs, each with D1/D2 dosage states; 8,192 total IDs including residual and special tokens. Model framing adds three tokens per person.
+**Region:** GRCh38 chr22:43,317,956–46,074,513, inclusive. **Catalog:** 82,401 normalized allele-specific variants. **Dictionary:** 3,662 motifs, each with D1/D2 dosage states; 8,192 total IDs including residual and special tokens. Model framing adds three tokens per person.
 
 The 503-person EUR cohort is partitioned by known pedigree components into 400 training, 55 validation, and 48 reserved test individuals. Fitting uses training individuals only. Validation informed development; the reserved test is unscored. [Full methods and limitations →](docs/methods.md)
 
@@ -100,7 +100,7 @@ The example creates synthetic dosages using one released motif and a residual, v
 
 | Component | Status |
 |---|---|
-| Frozen block 589 vocabulary, variant map, encoder and decoder | Released; checksummed |
+| Frozen chromosome 22 regional vocabulary, variant map, encoder and decoder | Released; checksummed |
 | Public-data download, preprocessing and benchmark pipeline | Released |
 | Compression and motif-frequency aggregates; figure-generation code | Released |
 | Reviewed biobank NTP aggregate curve | Released; controlled-data experiment not independently reproducible here |
