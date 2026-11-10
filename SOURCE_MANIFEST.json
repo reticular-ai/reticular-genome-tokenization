@@ -221,7 +221,7 @@
     },
     "README.md": {
       "source": "publication-review draft",
-      "sha256": "55834833f9c93d6a96293a1b3ce1e08fab7bf6cad6de7ddb8365b07c3db4db59"
+      "sha256": "42e05a35f0f6f3505df83de2fd491991c7b1625de7db905a0236429fb1fba2b6"
     },
     "reticular_diploid/analysis/public_distillation_figures.py": {
       "source": "pgs/analysis/public_distillation_figures.py",
@@ -301,7 +301,7 @@
     },
     "CITATION.cff": {
       "source": "public release presentation and aggregate evidence",
-      "sha256": "7b5fdaf172c2a27fe813f28560deb704124ba157967f230cb4a41cf0d37c1c8b"
+      "sha256": "49d4ae464da33f05289c84c0f4ed33c9f94391d2b3ed633bfd6d970b1485769f"
     },
     "CONTRIBUTING.md": {
       "source": "public release presentation and aggregate evidence",

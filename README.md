@@ -1,6 +1,6 @@
 # Reticular · 2.76 million bases of variation, ~1,450 tokens
 
-[![CPU correctness](https://github.com/reticular-ai/reticular-tokenization-demo/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-tokenization-demo/actions/workflows/test.yml)
+[![CPU correctness](https://github.com/reticular-ai/reticular-genome-tokenization-demo/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-genome-tokenization-demo/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **Biobank-scale genetic variation in hundreds of tokens, modeled autoregressively.**
@@ -76,8 +76,8 @@ The [aggregate CSVs](results) include zero-occurrence types, and the [reproducti
 Python 3.11 or 3.12; CPU only. No genotype download is needed for this example.
 
 ```bash
-git clone https://github.com/reticular-ai/reticular-tokenization-demo.git
-cd reticular-tokenization-demo
+git clone https://github.com/reticular-ai/reticular-genome-tokenization-demo.git
+cd reticular-genome-tokenization-demo
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
