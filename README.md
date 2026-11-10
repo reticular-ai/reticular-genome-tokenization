@@ -1,9 +1,11 @@
-# Reticular · 2.76 million bases of variation, ~1,450 tokens
+# Reticular · Tokenizing genomic variation into >2,000× shorter sequences
 
 [![CPU correctness](https://github.com/reticular-ai/reticular-genome-tokenization/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-genome-tokenization/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **Biobank-scale genetic variation in hundreds of tokens, modeled autoregressively.**
+
+The headline compares the **2.76-million-base regional span** with the biobank’s **712-token mean full sequence**—approximately **3,870 bases of span per token**. It describes representation length, not byte compression of a complete DNA sequence: the reference, allele catalog and dictionary are shared side information. The independently fitted public demo averages ~1,450 tokens, or approximately 1,900 bases of span per token.
 
 Our All of Us block 589 experiment represents diploid genetic variation in **712 tokens per person on average** and achieves **0.553 pooled holdout cross-entropy (nats/token)** across **5,320 new individuals**. The model was trained on **268,491 individuals**; its reporting checkpoint was selected using the original 1,000-person validation set before the new holdout evaluation.
 
