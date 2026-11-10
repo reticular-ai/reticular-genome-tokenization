@@ -221,7 +221,7 @@
     },
     "README.md": {
       "source": "publication-review draft",
-      "sha256": "150f781eecbb0a41edb539959b8161871dd5c866b3ab36ffae2c89f1b2863d9a"
+      "sha256": "8da5d0b519589f929f521ed24872e8e10db049b1e10593ab8031d97e6ad30f40"
     },
     "reticular_diploid/analysis/public_distillation_figures.py": {
       "source": "pgs/analysis/public_distillation_figures.py",
@@ -414,6 +414,14 @@
     "assets/Inter.ttf": {
       "source": "Reticular figure branding, PR #1",
       "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+    },
+    "figures/tokenizer-explainer-poster.png": {
+      "sha256": "93595f29de1c3367e415f599667430e6c9431e6b19784961bfe68c108e91e1fe",
+      "source": "User-approved Reticular Kino explainer, revision 7; synthetic schematic graphics and aggregate benchmark claims; publication requested for this README."
+    },
+    "figures/tokenizer-explainer.mp4": {
+      "sha256": "9578722fac5225b0cc239eb6421b1425b4c7d9537870622c9aab229f10e6fa3b",
+      "source": "User-approved Reticular Kino explainer, revision 7; synthetic schematic graphics and aggregate benchmark claims; publication requested for this README."
     }
   },
   "previous_export_source_commit": "c2f51d8e36aa7169478bc7fb284893e53f0a7ce5",
