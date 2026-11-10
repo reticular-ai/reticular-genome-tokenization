@@ -7,7 +7,7 @@ Reticular represents diploid genetic variation as **motif tokens plus lossless r
 
 [![Watch the 48-second overview: genomic variation becomes compact token sentences for language modeling](figures/tokenizer-explainer-poster.png)](https://github.com/reticular-ai/reticular-genome-tokenization/blob/main/figures/tokenizer-explainer.mp4)
 
-*[Watch the 48-second explainer](https://github.com/reticular-ai/reticular-genome-tokenization/blob/main/figures/tokenizer-explainer.mp4). The video uses the earlier ≈707-token internal example; current cohort-specific results appear below.*
+*[Watch or download the 48-second explainer](https://github.com/reticular-ai/reticular-genome-tokenization/blob/main/figures/tokenizer-explainer.mp4). The video uses the earlier ≈707-token internal example; current cohort-specific results appear below.*
 
 In a **2.76 Mb region on chromosome 22**, our All of Us model achieves **712 tokens/person** and **0.553 holdout CE (nats/token)** across **5,320 new individuals**, after training on 268,491 people. The checkpoint was selected before this holdout evaluation.
 

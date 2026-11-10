@@ -221,7 +221,7 @@
     },
     "README.md": {
       "source": "publication-review draft",
-      "sha256": "8da5d0b519589f929f521ed24872e8e10db049b1e10593ab8031d97e6ad30f40"
+      "sha256": "560a9a7c22729b16e7d62baf97ae046cc27119d51b26dd53d4329ce6892577d2"
     },
     "reticular_diploid/analysis/public_distillation_figures.py": {
       "source": "pgs/analysis/public_distillation_figures.py",
