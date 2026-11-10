@@ -1,4 +1,4 @@
-# Reticular · diploid genome tokenization
+# Reticular · 2.76 million bases of variation, ~1,450 tokens
 
 [![CPU correctness](https://github.com/reticular-ai/reticular-tokenization-demo/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-tokenization-demo/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
