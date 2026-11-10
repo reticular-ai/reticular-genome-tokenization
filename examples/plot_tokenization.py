@@ -8,8 +8,12 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+from matplotlib import font_manager
 from matplotlib.ticker import StrMethodFormatter
 import numpy as np
+
+ASSETS = Path(__file__).resolve().parents[1] / 'assets'
+font_manager.fontManager.addfont(ASSETS / 'Inter.ttf')
 
 PAPER, INK, PLUM, MUTED, TAUPE, GRID = (
     '#F7F4F0', '#24211F', '#4B2338', '#807971', '#B4A79C', '#E5DED7')
@@ -22,15 +26,17 @@ def rule(fig, y, left=.065, right=.95, color=GRID):
 
 def page(title, subtitle, category, note):
     fig = plt.figure(figsize=(12, 7), facecolor=PAPER)
-    fig.text(.065, .925, 'Reticular', family='DejaVu Serif', fontsize=22, color=INK)
-    fig.text(.95, .935, category.upper(), ha='right', family='DejaVu Sans Mono',
+    logo = fig.add_axes([.065, .9, .15, .04])
+    logo.imshow(plt.imread(ASSETS / 'reticular-logo.png'))
+    logo.axis('off')
+    fig.text(.95, .935, category.upper(), ha='right', family='Inter',
              fontsize=9, color=MUTED)
-    fig.text(.065, .815, title, family='DejaVu Serif', fontsize=25, color=INK)
+    fig.text(.065, .815, title, family='Inter', fontsize=25, color=INK)
     fig.text(.065, .758, subtitle, fontsize=11, color=MUTED)
     rule(fig, .71, color=INK)
     rule(fig, .10)
     fig.text(.065, .056, note, fontsize=8.5, color=MUTED, va='center')
-    fig.text(.95, .045, 'reticular.com', family='DejaVu Sans Mono', fontsize=9,
+    fig.text(.95, .045, 'reticular.com', family='Inter', fontsize=9,
              color=PLUM, ha='right')
     return fig
 
@@ -60,7 +66,7 @@ def main():
     parser.add_argument('--output', type=Path, default=Path('figures'))
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
-    plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 10,
+    plt.rcParams.update({'font.family': 'Inter', 'font.size': 10,
                          'text.color': INK, 'axes.labelcolor': MUTED,
                          'axes.labelpad': 12, 'svg.hashsalt': 'reticular-editorial-v1'})
     data = json.loads((args.results / 'tokenization.json').read_text())
@@ -81,7 +87,7 @@ def main():
     ax.set_xlabel('Mean count per validation individual')
     for y, value in zip([2, 1, 0], values):
         ax.text(value+180, y, f'{value:,.0f}', va='center', color=PLUM if y==0 else INK,
-                fontsize=13, family='DejaVu Serif')
+                fontsize=13, family='Inter')
     save(fig, args.output, 'tokenization')
 
     fig = page('Common motifs, and a long tail',
@@ -146,16 +152,16 @@ def main():
          'tokens per individual', 'Mean full canonical sequence'),
         (.385, f"{scores['pooled']:.3f}", 'holdout cross-entropy', 'Nats per scored token'),
         (.705, f"{h['cohorts']['pooled']:,}", 'new individuals', 'Outside original train / validation')]:
-        fig.text(x, .575, value, family='DejaVu Serif', fontsize=48, color=PLUM)
+        fig.text(x, .575, value, family='Inter', fontsize=48, color=PLUM)
         fig.text(x, .515, label, fontsize=12, color=INK)
         fig.text(x, .472, detail, fontsize=9, color=MUTED)
     rule(fig, .415)
-    fig.text(.065, .365, 'Reporting cohort', family='DejaVu Serif', fontsize=13)
+    fig.text(.065, .365, 'Reporting cohort', family='Inter', fontsize=13)
     for x,label in [(.58,'Individuals'),(.77,'Mean tokens'),(.95,'CE')]:
         fig.text(x, .365, label, color=MUTED, fontsize=10, ha='right')
     for y,key,label in [(.285,'locked_test_reserve','Locked test'),
                         (.205,'within_family_holdout','Within-family holdout')]:
-        fig.text(.065, y, label, family='DejaVu Serif', fontsize=14)
+        fig.text(.065, y, label, family='Inter', fontsize=14)
         fig.text(.58, y, f"{h['cohorts'][key]:,}", ha='right', fontsize=12)
         fig.text(.77, y, f"{lengths[key]['mean_sentence_tokens']:,.2f}", ha='right', fontsize=12)
         fig.text(.95, y, f"{scores[key]:.5f}", ha='right', fontsize=12, color=PLUM)
