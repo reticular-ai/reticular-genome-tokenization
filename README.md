@@ -5,7 +5,7 @@
 
 Reticular represents diploid genetic variation as **motif tokens plus lossless residuals**, for exact dosage reconstruction and sequence modeling.
 
-[![Watch the 48-second overview: genomic variation becomes compact token sentences for language modeling](figures/tokenizer-explainer-poster.png)](https://github.com/reticular-ai/reticular-genome-tokenization/blob/main/figures/tokenizer-explainer.mp4)
+https://github.com/user-attachments/assets/ca16ed18-e263-4ea4-9ab6-1ad9cc2cb217
 
 *[Watch or download the 48-second explainer](https://github.com/reticular-ai/reticular-genome-tokenization/blob/main/figures/tokenizer-explainer.mp4). The video uses the earlier ≈707-token internal example; current cohort-specific results appear below.*
 
