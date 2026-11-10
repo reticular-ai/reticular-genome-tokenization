@@ -19,3 +19,7 @@ The public benchmark was rerun using release commit ac9ef0e9f16064fc1f95948a9fa6
 The author additionally requested public inclusion of the reviewed PR #359 biobank aggregate curve and supplied the 707-token mean from a separate calculation. The curve is copied unchanged from the pinned PR record; the length is separately labeled author-reported and has not been independently audited. Only aggregate counts and losses are added, with no controlled-data dictionary, graph features, participant rows or model weights.
 
 Presentation checks: 87 CPU tests passed. Regenerated motif counts exactly matched the archived public analysis, and their totals reconcile with the tokenization benchmark. All three figures were visually reviewed; local documentation links resolve. The 19-point biobank aggregate JSON is byte-identical to the reviewed source packet.
+
+## Expanded holdout correction
+
+At the author's request, PRs #372 and #373 were reviewed and the aggregate-only expanded evaluation added publicly. The 5,320-person result and split-specific lengths supersede the earlier approximate length and original-validation-only headline. The new aggregate JSON is copied unchanged from pinned PR #372. No controlled participant artifacts or model payloads are included; controlled evaluation was not rerun. The original #359 trajectory and superseded author-reported length are preserved with explicit labels.

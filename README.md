@@ -5,9 +5,9 @@
 
 **Biobank-scale genetic variation in hundreds of tokens, modeled autoregressively.**
 
-Our All of Us block 589 experiment represents diploid genetic variation with a reported mean of **707 tokens per person** and achieves approximately **0.55 validation cross-entropy (nats/token)**. A larger Kimi-derived model was trained on **268,491 individuals** and evaluated on **1,000 held-out validation individuals**; its best recorded CE was **0.538 at 55,000 updates**.
+Our All of Us block 589 experiment represents diploid genetic variation in **712 tokens per person on average** and achieves **0.553 pooled holdout cross-entropy (nats/token)** across **5,320 new individuals**. The model was trained on **268,491 individuals**; its reporting checkpoint was selected using the original 1,000-person validation set before the new holdout evaluation.
 
-The 707-token mean comes from an author-reported calculation; the validation curve comes from the reviewed PR #359 aggregate record. [Measurement provenance and evaluation scope →](docs/biobank.md)
+On the **3,817-person locked-test cohort**, the mean full sequence is **706 tokens** and CE is **0.545**. A further **1,503 within-family holdout individuals** bring the new evaluation to 5,320 people. Full sequence lengths include three framing tokens. [Exact results and evaluation scope →](docs/biobank.md)
 
 This repository provides the **publicly reproducible companion**: a frozen tokenizer fitted independently on 1000 Genomes training data, with **1,452 tokens per validation individual** across a 2.76 Mb region and **exact reconstruction for all 455 development individuals**. Encoding and reconstruction require no private infrastructure.
 
@@ -15,11 +15,19 @@ This repository provides the **publicly reproducible companion**: a frozen token
 
 ## Biobank-scale language modeling
 
-The biobank tokenizer uses **8,192 model token IDs**; the retained encoding record reports **zero reconstruction failures**. The curve below shows the full recorded trajectory, including the increase in validation loss after the best checkpoint.
+The **preselected 55K checkpoint** was evaluated with the unchanged **8,192-ID tokenizer**. New participants were absent from the original training/validation corpus, and their recorded family components were absent from original training.
 
-![Biobank validation cross-entropy](figures/biobank-ntp.svg)
+| New reporting cohort | People | Mean full sequence tokens | CE (nats/token) |
+|---|---:|---:|---:|
+| Locked-test holdout | 3,817 | 706.37 | **0.54495** |
+| Within-family holdout | 1,503 | 726.98 | 0.57314 |
+| Pooled | **5,320** | **712.19** | **0.55308** |
 
-These are historical development results from reviewed aggregate records. Canonical discovery/tuning role mapping remains unverified. The biobank and public experiments use different fitted dictionaries, cohorts and model configurations, so this is not a matched model-size or data-scaling comparison. [Protocol, full curve, and evidence limits →](docs/biobank.md)
+![Biobank checkpoint results on new holdouts](figures/biobank-holdouts.svg)
+
+Later checkpoints deteriorated on both cohorts; these holdouts did not select a replacement checkpoint. Results and lengths come from [PR #372](https://github.com/reticular-ai/pgs/pull/372), with evaluation implementation in [PR #373](https://github.com/reticular-ai/pgs/pull/373). The publicly readable [aggregate record](results/biobank-holdouts.json) preserves exact values.
+
+The broader historical canonical partition is not claimed pristine: this result is defined by the selected new participants and stated original-training family exclusions. The biobank and public experiments use different fitted dictionaries, cohorts and model configurations, so this is not a matched scaling comparison. [Protocol, historical validation curve, and evidence limits →](docs/biobank.md)
 
 ## Genetic variation as a token sequence
 

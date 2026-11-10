@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "benchmark_alias": "block589-diploid-clean-holdouts-v1",
+  "historical_baseline_alias": "block589-diploid-8192-historical-v1",
+  "status": "completed_and_controlled_archive_verified",
+  "scope": "Original best, midpoint, and last retained checkpoints on selected new-person holdouts; the full remaining EUR cohort was not evaluated.",
+  "method": {
+    "model_vocabulary_size": 8192,
+    "content_vocabulary_size": 8186,
+    "context": 256,
+    "stride": 128,
+    "sequence_mode": "pure_forward",
+    "evaluation_precision": "float32",
+    "metric": "canonical-target cross-entropy in nats/token",
+    "overlap_ownership": "lowest frozen window row per participant canonical target",
+    "eos": "exactly one scored true EOS per participant",
+    "pooled_ce": "summed NLL divided by summed canonical target count",
+    "dictionary_refitted": false,
+    "model_trained": false
+  },
+  "selection": {
+    "original_preselected_reporting_step": 55000,
+    "comparison_steps": [
+      55000,
+      77000,
+      99000
+    ],
+    "selection_used_new_holdout_ce": false
+  },
+  "cohorts": {
+    "locked_test_reserve": 3817,
+    "within_family_holdout": 1503,
+    "pooled": 5320
+  },
+  "membership": "Selected participants are absent from the original training and validation corpus; their recorded family components are absent from original training. Canonical role labels are retained.",
+  "checkpoint_metrics": [
+    {
+      "optimizer_update": 55000,
+      "canonical_target_ce_nats_per_token": {
+        "locked_test_reserve": 0.5449470382844914,
+        "within_family_holdout": 0.5731373727181317,
+        "pooled": 0.5530771567511026
+      }
+    },
+    {
+      "optimizer_update": 77000,
+      "canonical_target_ce_nats_per_token": {
+        "locked_test_reserve": 0.5976446652432101,
+        "within_family_holdout": 0.6313640730284626,
+        "pooled": 0.6073693735670295
+      }
+    },
+    {
+      "optimizer_update": 99000,
+      "canonical_target_ce_nats_per_token": {
+        "locked_test_reserve": 0.6393433627864198,
+        "within_family_holdout": 0.6747438155122466,
+        "pooled": 0.649552886022483
+      }
+    }
+  ],
+  "sequence_length_definition": "BOS + forward-direction token + full diploid content sequence + EOS; no padding or window duplication",
+  "sequence_length_statistics": [
+    {
+      "cohort": "original_training",
+      "participants": 268491,
+      "mean_content_tokens": 706.1875183898156,
+      "mean_sentence_tokens": 709.1875183898156
+    },
+    {
+      "cohort": "original_validation",
+      "participants": 1000,
+      "mean_content_tokens": 701.26,
+      "mean_sentence_tokens": 704.26
+    },
+    {
+      "cohort": "locked_test_reserve",
+      "participants": 3817,
+      "mean_content_tokens": 703.3699240241027,
+      "mean_sentence_tokens": 706.3699240241027
+    },
+    {
+      "cohort": "within_family_holdout",
+      "participants": 1503,
+      "mean_content_tokens": 723.9787092481703,
+      "mean_sentence_tokens": 726.9787092481703
+    },
+    {
+      "cohort": "pooled_selected_holdouts",
+      "participants": 5320,
+      "mean_content_tokens": 709.1922932330828,
+      "mean_sentence_tokens": 712.1922932330828
+    }
+  ],
+  "window_statistics": {
+    "population": "original training and validation combined",
+    "context": 256,
+    "stride": 128,
+    "mean_unpadded_window_tokens": 242.25613714003242,
+    "separate_training_validation_window_means_reported": false
+  },
+  "source_provenance": {
+    "original_results_pr": "https://github.com/reticular-ai/pgs/pull/359",
+    "implementation_pr": "https://github.com/reticular-ai/pgs/pull/335",
+    "evaluation_code_commit": "4674d472334c95c7ac62de1a2a99c003b7a7e1fb",
+    "controlled_provenance": "Exact input/checkpoint bindings, artifact hashes, participant mappings, and validated archive receipts remain in the approved AoU workspace."
+  },
+  "limitations": [
+    "The broader historical canonical holdout partition is not claimed pristine; only the explicitly selected people and stated original-training family exclusions define this evaluation.",
+    "Within-family denotes holdout-cohort token CE, not a within-family phenotype effect or PGS attenuation estimate.",
+    "No seed-replicated uncertainty intervals, token-frequency/Markov baseline comparison, or downstream trait-prediction claim is established.",
+    "The original validation set selected 55K; these holdouts do not select a replacement checkpoint.",
+    "Sentence lengths describe full canonical participant streams before overlapping windows; full sentences include exactly three special tokens.",
+    "The original frozen allele universe is retained; this evaluation does not assess new alleles outside that support."
+  ],
+  "disclosure_scope": "Reviewed whole-cohort counts, mean token lengths, and loss aggregates only. No participant records, token streams, rare genomic/subgroup details, protected artifact locators, raw logs, vocabulary payloads, or weights."
+}

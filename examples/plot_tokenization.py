@@ -75,6 +75,26 @@ def main():
                     metadata={'Date': None} if suffix=='svg' else None)
     plt.close(fig)
 
+    holdouts = json.loads((args.results / 'biobank-holdouts.json').read_text())
+    fig, ax = plt.subplots(figsize=(9, 4.5), constrained_layout=True)
+    for key, label, color in [('locked_test_reserve', 'Locked test (n=3,817)', navy),
+                              ('within_family_holdout', 'Within-family holdout (n=1,503)', gray),
+                              ('pooled', 'Pooled (n=5,320)', teal)]:
+        ax.plot([r['optimizer_update']/1000 for r in holdouts['checkpoint_metrics']],
+                [r['canonical_target_ce_nats_per_token'][key] for r in holdouts['checkpoint_metrics']],
+                color=color, marker='o', linewidth=2, label=label)
+    ax.set_title('The preselected checkpoint generalizes to 5,320 new people',
+                 loc='left', weight='bold', fontsize=13, pad=20)
+    ax.text(0, 1.02, '55K checkpoint fixed before evaluation · unchanged tokenizer · no refitting',
+            transform=ax.transAxes, color='#536574', fontsize=10)
+    ax.set_xlabel('Checkpoint optimizer updates (thousands)')
+    ax.set_ylabel('Reported holdout CE (nats/token)')
+    ax.set_xticks([55,77,99]); ax.legend(frameon=False); ax.grid(alpha=.15)
+    for suffix in ['svg', 'png']:
+        fig.savefig(args.output / f'biobank-holdouts.{suffix}', dpi=180,
+                    metadata={'Date': None} if suffix=='svg' else None)
+    plt.close(fig)
+
 
 if __name__ == '__main__':
     main()

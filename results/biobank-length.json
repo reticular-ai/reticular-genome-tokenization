@@ -6,5 +6,6 @@
   "underlying_calculation_independently_verified": false,
   "averaging_population": "not specified in supplied calculation",
   "framing_convention": "not specified in supplied calculation",
-  "not_present_in_pr_359": true
+  "not_present_in_pr_359": true,
+  "status": "superseded by verified cohort-specific lengths in biobank-holdouts.json; retained as historical provenance"
 }
