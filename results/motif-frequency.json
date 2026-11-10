@@ -1,0 +1,19 @@
+{
+  "code_commit": "1e8bca99699db4ed2dff7b86d659f06fe38b44d4",
+  "tokenizer_sha256": "692c032232df5667ab1323b30f10b1db9ffad105f42cef3a02280bc758e2f352",
+  "canonical_sha256": "7e24a940ca016b26363d9d18e81fc59fe86edc16a1f36a41037b51ee116676b8",
+  "locked_test_used": false,
+  "counting": "Each canonical stream once; D1/D2 separate; no residuals or framing",
+  "splits": {
+    "training": {
+      "occurrences": 180630,
+      "observed_types": 6414,
+      "available_types": 7324
+    },
+    "validation": {
+      "occurrences": 25887,
+      "observed_types": 4964,
+      "available_types": 7324
+    }
+  }
+}
