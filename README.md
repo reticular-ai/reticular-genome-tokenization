@@ -1,6 +1,6 @@
 # Reticular · diploid genome tokenization
 
-[![CPU correctness](https://github.com/reticular-ai/reticular-diploid-demo/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-diploid-demo/actions/workflows/test.yml)
+[![CPU correctness](https://github.com/reticular-ai/reticular-tokenization-demo/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-tokenization-demo/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **Biobank-scale genetic variation in hundreds of tokens, modeled autoregressively.**
@@ -23,9 +23,9 @@ The **preselected 55K checkpoint** was evaluated with the unchanged **8,192-ID t
 | Within-family holdout | 1,503 | 726.98 | 0.57314 |
 | Pooled | **5,320** | **712.19** | **0.55308** |
 
-![Biobank checkpoint results on new holdouts](figures/biobank-holdouts.svg)
+![Biobank result: 712 mean sequence tokens, 0.553 pooled CE, 5,320 new individuals](figures/biobank-summary.svg)
 
-Later checkpoints deteriorated on both cohorts; these holdouts did not select a replacement checkpoint. Results and lengths come from [PR #372](https://github.com/reticular-ai/pgs/pull/372), with evaluation implementation in [PR #373](https://github.com/reticular-ai/pgs/pull/373). The publicly readable [aggregate record](results/biobank-holdouts.json) preserves exact values.
+The checkpoint was fixed before this evaluation. The [detailed results](docs/biobank.md) retain all three checkpoint endpoints, including later deterioration. Results and lengths come from [PR #372](https://github.com/reticular-ai/pgs/pull/372), with evaluation implementation in [PR #373](https://github.com/reticular-ai/pgs/pull/373). The publicly readable [aggregate record](results/biobank-holdouts.json) preserves exact values.
 
 The broader historical canonical partition is not claimed pristine: this result is defined by the selected new participants and stated original-training family exclusions. The biobank and public experiments use different fitted dictionaries, cohorts and model configurations, so this is not a matched scaling comparison. [Protocol, historical validation curve, and evidence limits →](docs/biobank.md)
 
@@ -76,8 +76,8 @@ The [aggregate CSVs](results) include zero-occurrence types, and the [reproducti
 Python 3.11 or 3.12; CPU only. No genotype download is needed for this example.
 
 ```bash
-git clone https://github.com/reticular-ai/reticular-diploid-demo.git
-cd reticular-diploid-demo
+git clone https://github.com/reticular-ai/reticular-tokenization-demo.git
+cd reticular-tokenization-demo
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt

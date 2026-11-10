@@ -5,6 +5,6 @@ authors:
   - name: "Reticular"
 type: software
 license: MIT
-repository-code: "https://github.com/reticular-ai/reticular-diploid-demo"
-url: "https://github.com/reticular-ai/reticular-diploid-demo"
+repository-code: "https://github.com/reticular-ai/reticular-tokenization-demo"
+url: "https://github.com/reticular-ai/reticular-tokenization-demo"
 abstract: "Frozen-vocabulary, phase-independent diploid dosage tokenization and reproducible public 1000 Genomes benchmarks."

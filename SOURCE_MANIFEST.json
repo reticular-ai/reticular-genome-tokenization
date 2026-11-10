@@ -221,7 +221,7 @@
     },
     "README.md": {
       "source": "publication-review draft",
-      "sha256": "2d648c6c793c750a852b3c48dc11130e2d3662bee08150cec5aa5e92182d9c88"
+      "sha256": "b8e8e524cb8ce0126624c4b1ec66daba9323831b3b058d97fd0cd28b9576103a"
     },
     "reticular_diploid/analysis/public_distillation_figures.py": {
       "source": "pgs/analysis/public_distillation_figures.py",
@@ -301,7 +301,7 @@
     },
     "CITATION.cff": {
       "source": "public release presentation and aggregate evidence",
-      "sha256": "548af83caa9d280fdeda442de5f2644ad4f4aff59c96a60e72d0f3548fc921e3"
+      "sha256": "7b5fdaf172c2a27fe813f28560deb704124ba157967f230cb4a41cf0d37c1c8b"
     },
     "CONTRIBUTING.md": {
       "source": "public release presentation and aggregate evidence",
@@ -337,7 +337,7 @@
     },
     "examples/plot_tokenization.py": {
       "source": "public release presentation and aggregate evidence",
-      "sha256": "d2d9b4cf67e7aebc29d0730eb747d3b89b6d873a29e6013adca8933cb61859d4"
+      "sha256": "881296b1bf30f6253ad82cdd00e68172579b1dc06515f83957dbc21de91f61b2"
     },
     "reticular_diploid/analysis/motif_frequency.py": {
       "source": "public release presentation and aggregate evidence",
@@ -390,6 +390,14 @@
     "figures/biobank-holdouts.png": {
       "source": "PR #372 aggregate evidence and public figure generation",
       "sha256": "d3ed6453e9a963cf8f2b56f96b84fc2e3ad69714bf4ad11a3e7cf188366e75e9"
+    },
+    "figures/biobank-summary.png": {
+      "source": "public aggregate summary figure",
+      "sha256": "1125b3eebbcbf33db4ec1f74bae6305e8f48518a9cca291d63866f1981f7caa5"
+    },
+    "figures/biobank-summary.svg": {
+      "source": "public aggregate summary figure",
+      "sha256": "92c73ceda0f462acf501354ef7652b219a34327cbb8d028c0de0d64c6cb0f0ea"
     }
   },
   "previous_export_source_commit": "c2f51d8e36aa7169478bc7fb284893e53f0a7ce5",

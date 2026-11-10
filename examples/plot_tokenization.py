@@ -96,5 +96,44 @@ def main():
     plt.close(fig)
 
 
+    # Summary of the fixed reporting checkpoint, not a new selection or comparison.
+    from matplotlib.patches import FancyBboxPatch
+    lengths = {row['cohort']: row for row in holdouts['sequence_length_statistics']}
+    chosen = next(row for row in holdouts['checkpoint_metrics']
+                  if row['optimizer_update'] == holdouts['selection']['original_preselected_reporting_step'])
+    scores = chosen['canonical_target_ce_nats_per_token']
+    fig = plt.figure(figsize=(12, 6), facecolor='#F4F7F8')
+    ax = fig.add_axes([0, 0, 1, 1]); ax.set_axis_off()
+    ax.text(.055, .91, 'RETICULAR  /  BIOBANK RESULTS', color=teal, weight='bold', fontsize=11)
+    ax.text(.055, .81, 'Human genetic variation, in hundreds of tokens',
+            color=navy, fontsize=24, weight='bold')
+    ax.text(.055, .74, 'Diploid block 589 · 8,192-ID vocabulary · frozen 55K checkpoint',
+            color='#536574', fontsize=12)
+    cards = [
+        (f"{lengths['pooled_selected_holdouts']['mean_sentence_tokens']:,.0f}", 'tokens per individual',
+         'Mean full canonical sequence'),
+        (f"{scores['pooled']:.3f}", 'holdout cross-entropy', 'Nats/token · target-weighted pooled CE'),
+        (f"{holdouts['cohorts']['pooled']:,}", 'new individuals evaluated', 'Absent from original training / validation'),
+    ]
+    for x, (value, label, detail) in zip([.055,.365,.675], cards):
+        ax.add_patch(FancyBboxPatch((x,.35), .275,.30, boxstyle='round,pad=0.012',
+                                   linewidth=0, facecolor='white'))
+        ax.text(x+.015,.525,value,color=navy,fontsize=40,weight='bold')
+        ax.text(x+.015,.455,label,color=teal,fontsize=13,weight='bold')
+        ax.text(x+.015,.39,detail,color='#536574',fontsize=8.5)
+    ax.text(.055,.25, 'Locked test', color=navy, fontsize=12, weight='bold')
+    ax.text(.055,.195, '3,817 people  ·  706.37 tokens  ·  0.54495 CE', color='#536574',fontsize=11)
+    ax.text(.53,.25, 'Within-family holdout', color=navy, fontsize=12, weight='bold')
+    ax.text(.53,.195, '1,503 people  ·  726.98 tokens  ·  0.57314 CE', color='#536574',fontsize=11)
+    ax.text(.055,.075, 'Full sequences include BOS + forward + EOS. Selected-person / family exclusions apply.',
+            color='#536574',fontsize=10)
+    ax.text(.055,.035, 'Aggregate evidence: PR #372 · evaluation: PR #373 · cohort definitions and limitations in docs/biobank.md',
+            color='#536574',fontsize=8.5)
+    for suffix in ['svg', 'png']:
+        fig.savefig(args.output / f'biobank-summary.{suffix}', dpi=180,
+                    metadata={'Date': None} if suffix=='svg' else None)
+    plt.close(fig)
+
+
 if __name__ == '__main__':
     main()
