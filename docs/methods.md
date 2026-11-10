@@ -40,3 +40,27 @@ The vocabulary was fitted on training people only. Validation informed developme
 Count each canonical content stream once. D1 and D2 are separate types; residuals and special tokens do not enter the numerator or denominator. Frequency is a token type's occurrence count divided by all motif occurrences in that split. Curves rank types independently within training and validation. Zero-occurrence types remain in the CSVs but cannot appear on logarithmic axes.
 
 The distribution has a common head and a long tail. We do not claim a verified Zipf law or power-law model: approximately linear portions of a log-log plot do not establish that distributional form. These are frequencies of emitted selected motifs, not population frequencies of every biological motif.
+
+## Public benchmark figures and statistics
+
+![Public token counts](../figures/tokenization.svg)
+
+| Content sequence statistic | Training (400 people) | Validation (55 people) |
+|---|---:|---:|
+| Mean tokens | 1,208.8 | 1,451.9 |
+| Median | 1,188.5 | 1,427 |
+| 95th percentile | 1,463.3 | 1,762.5 |
+| Maximum | 1,985 | 1,875 |
+| Motif share of emitted tokens | 37.36% | 32.42% |
+| Residual-only mean | 10,650.6 | 10,705.2 |
+| Exact reconstruction | 400 / 400 | 55 / 55 |
+
+Lengths exclude three model-framing tokens. The dictionary has 3,662 motifs and 8,192 total IDs. [Exact aggregate results](../results/tokenization.json).
+
+![Motif rank-frequency distribution](../figures/motif-frequency.svg)
+
+[Aggregate CSVs](../results) retain zero-frequency types. See the [reproduction guide](reproduction.md#2-reproduce-motif-frequencies) to regenerate counts and figures.
+
+## Data acknowledgements
+
+The data are from [IGSR's high-coverage 1000 Genomes collection](https://www.internationalgenome.org/data-portal/data-collection/1000genomes_30x/). Cite [Byrska-Bishop et al., Cell 2022](https://pmc.ncbi.nlm.nih.gov/articles/PMC9439720/). Samples originated from the NIGMS Human Genetic Cell Repository at the Coriell Institute for Medical Research; sequencing was generated at the New York Genome Center with NHGRI support (3UM1HG008901-03S1 and 3UM1HG008901-04S2). We acknowledge the sample donors. See the [provider acknowledgement statement](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/1000G_2504_high_coverage/20200526_1000G_2504plus698_high_cov_data_reuse_README.txt). Source data retain their providers' terms.

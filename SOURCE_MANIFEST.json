@@ -221,7 +221,7 @@
     },
     "README.md": {
       "source": "publication-review draft",
-      "sha256": "f7366b905855b630773e35f6c912216f8a0dff23e3d7eed9830ca5fa0d8045f8"
+      "sha256": "150f781eecbb0a41edb539959b8161871dd5c866b3ab36ffae2c89f1b2863d9a"
     },
     "reticular_diploid/analysis/public_distillation_figures.py": {
       "source": "pgs/analysis/public_distillation_figures.py",
@@ -305,7 +305,7 @@
     },
     "CONTRIBUTING.md": {
       "source": "public release presentation and aggregate evidence",
-      "sha256": "e6c165e390ab4f38e5381702ec323806bcbb8b8bff6734729f876120f028543f"
+      "sha256": "8a47862ba8e54e523b0102f131f3e9ea805e23b7b2ffd11aa33a310cf1fe0178"
     },
     "tests/test_motif_frequency.py": {
       "source": "public release presentation and aggregate evidence",
@@ -313,7 +313,7 @@
     },
     "docs/methods.md": {
       "source": "public release presentation and aggregate evidence",
-      "sha256": "26094e8fd070e95c0d50d1b999ab019700b2dbf1b8189a5eddcd827e7abe25f9"
+      "sha256": "584b846a9c5c3bfbf517a799804be420a5f362c292c9b977f8235ea33c4c5056"
     },
     "docs/biobank.md": {
       "source": "public release presentation and aggregate evidence",
