@@ -47,7 +47,7 @@ def main():
     args.output.mkdir(parents=True)
     for split, values in counts.items():
         with (args.output / f'motif-frequency-{split}.csv').open('w', newline='') as handle:
-            writer = csv.writer(handle)
+            writer = csv.writer(handle, lineterminator="\n")
             writer.writerow(['token_id', 'occurrences'])
             writer.writerows(enumerate(values.tolist()))
     (args.output / 'motif-frequency.json').write_text(json.dumps({
