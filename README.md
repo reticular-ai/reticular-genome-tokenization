@@ -3,11 +3,23 @@
 [![CPU correctness](https://github.com/reticular-ai/reticular-diploid-demo/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-diploid-demo/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**A compact, lossless token representation of human diploid genetic variation.**
+**Biobank-scale genetic variation in hundreds of tokens, modeled autoregressively.**
 
-Across a 2.76 Mb region of chromosome 22, the released tokenizer represents a validation individual's genetic differences in **1,452 tokens on average**, using an **8,192-ID vocabulary**. Every allele-specific dosage is recovered exactly for all **455 development individuals**. The dictionary was fitted on public 1000 Genomes training data; encoding and reconstruction require no private infrastructure.
+Our All of Us block 589 experiment represents diploid genetic variation with a reported mean of **707 tokens per person** and achieves approximately **0.55 validation cross-entropy (nats/token)**. A larger Kimi-derived model was trained on **268,491 individuals** and evaluated on **1,000 held-out validation individuals**; its best recorded CE was **0.538 at 55,000 updates**.
 
-[Quick start](#quick-start) · [Reproduce the benchmark](docs/reproduction.md) · [Methods](docs/methods.md) · [Biobank results](docs/biobank.md) · [Aggregate data](results)
+The 707-token mean comes from an author-reported calculation; the validation curve comes from the reviewed PR #359 aggregate record. [Measurement provenance and evaluation scope →](docs/biobank.md)
+
+This repository provides the **publicly reproducible companion**: a frozen tokenizer fitted independently on 1000 Genomes training data, with **1,452 tokens per validation individual** across a 2.76 Mb region and **exact reconstruction for all 455 development individuals**. Encoding and reconstruction require no private infrastructure.
+
+[Biobank results](#biobank-scale-language-modeling) · [Public benchmark](#public-data-benchmark) · [Quick start](#quick-start) · [Reproduce](docs/reproduction.md) · [Methods](docs/methods.md)
+
+## Biobank-scale language modeling
+
+The biobank tokenizer uses **8,192 model token IDs**; the retained encoding record reports **zero reconstruction failures**. The curve below shows the full recorded trajectory, including the increase in validation loss after the best checkpoint.
+
+![Biobank validation cross-entropy](figures/biobank-ntp.svg)
+
+These are historical development results from reviewed aggregate records. Canonical discovery/tuning role mapping remains unverified. The biobank and public experiments use different fitted dictionaries, cohorts and model configurations, so this is not a matched model-size or data-scaling comparison. [Protocol, full curve, and evidence limits →](docs/biobank.md)
 
 ## Genetic variation as a token sequence
 
@@ -50,14 +62,6 @@ The 503-person EUR cohort is partitioned by known pedigree components into 400 t
 *Only motif tokens are counted; residuals and framing are excluded. D1 and D2 are separate types. Each split is ranked independently. The common head and rare tail are visible in both splits; this descriptive plot does not establish a Zipf law.*
 
 The [aggregate CSVs](results) include zero-occurrence types, and the [reproduction guide](docs/reproduction.md#2-reproduce-motif-frequencies) explains how to regenerate them from canonical streams without counting overlapping windows twice.
-
-## Biobank-scale language modeling
-
-A separate All of Us campaign trained a larger Kimi-derived model on **268,491 people**, with **1,000 held-out validation people** and an 8,192-ID diploid tokenizer. **Mean sequence length is 707 tokens/person** (author-reported calculation; see provenance below). Recorded validation cross-entropy reached approximately **0.55 nats/token**; the best endpoint was **0.538 at 55K updates**. Later validation loss increased.
-
-![Biobank validation cross-entropy](figures/biobank-ntp.svg)
-
-These are historical development results from reviewed aggregate records. Canonical discovery/tuning role mapping remains unverified. The biobank and public experiments use different fitted dictionaries, cohorts and model configurations, so this is not a matched model-size or data-scaling comparison. [Protocol, full curve, and evidence limits →](docs/biobank.md)
 
 ## Quick start
 
