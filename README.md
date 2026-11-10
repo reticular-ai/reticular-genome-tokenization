@@ -1,4 +1,4 @@
-# Reticular · Tokenizing genomic variation into >2,000× shorter sequences
+# Reticular - Tokenizing human genomic variation into >2,000x shorter sequences
 
 [![CPU correctness](https://github.com/reticular-ai/reticular-genome-tokenization/actions/workflows/test.yml/badge.svg)](https://github.com/reticular-ai/reticular-genome-tokenization/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
